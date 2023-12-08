@@ -1,2 +1,36 @@
-<h1>Public::Registrations#new</h1>
-<p>Find me in app/views/public/registrations/new.html.erb</p>
+<h1>会員登録画面</h1>
+
+<%= form_with model:@user, url: '/users', method: :post do |f| %>
+
+<%= f.label :名前 %>
+<%= f.text_field :real_name, autofocus: true, autocomplete: "real_name", class: "form-control" %>
+
+<%= f.label :ユーザー名 %>
+<%= f.text_field :user_name, autofocus: true, autocomplete: "user_name", class: "form-control" %>
+
+<%= f.label :メールアドレス %>
+<%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+
+<%= f.label :郵便番号 %>
+<%= f.text_field :postal_code, autofocus: true, autocomplete: "postal_code", class: "form-control" %>
+
+<%= f.label :住所 %>
+<%= f.text_field :address, autofocus: true, autocomplete: "address", class: "form-control" %>
+
+<%= f.label :電話番号 %>
+<%= f.text_field :telephone_number, autofocus: true, autocomplete: "telephone_number", class: "form-control" %>
+
+<%= f.label :パスワード（６文字以上） %>
+<% if @minimum_password_length %>
+<% end %>
+<%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
+
+<%= f.label :確認用パスワード %>
+<%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
+
+<%= f.submit "新規登録" %>
+
+<% end %>
+
+<h4>既に会員済みの方</h4>
+<%= link_to "こちら", new_user_session_path %></span>から♬
