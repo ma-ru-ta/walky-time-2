@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  dog_name: MyString
+  day: 2023-12-07
+  city: MyString
+  post_body: MyText
+  is_post_status: false
+
+two:
+  dog_name: MyString
+  day: 2023-12-07
+  city: MyString
+  post_body: MyText
+  is_post_status: false
