@@ -1,2 +1,27 @@
-<h1>Public::Users#check</h1>
-<p>Find me in app/views/public/users/check.html.erb</p>
+<div class= "container">
+  <div class="row d-flex justify-content-center">
+     <div class= "col text-center p-5">
+      <font size="6" face="Times New Roman">本当に退会しますか？</font><br/>
+     </div>
+  </div>
+  
+  <div class= "row">
+    <div class= "col text-center p-4">
+      <h4 class="about-text">
+         退会すると、会員登録情報や</br>
+         これまでの購入履歴が閲覧できなくなります。</br>
+         退会する場合は「退会する」をクリックしてください。</br>
+      </h4>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col text-center p-4 h-100 w-100">
+      <span class="pr-4">
+        <%= link_to "退会しない", customers_edit_path,class:"btn btn-light", style: "background-color: #a5c9d6; color: #664e3d;" %>
+      </span>
+      <span class="pr-4">
+        <%= link_to "退会する", customers_withdraw_path, method: :patch, class:"btn btn-light", style: "background-color: #f5b1aa; color: #664e3d;" %>
+      </span>
+    </div>
+  </div>

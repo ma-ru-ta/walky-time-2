@@ -1,2 +1,17 @@
-<h1>Public::Sessions#new</h1>
-<p>Find me in app/views/public/sessions/new.html.erb</p>
+<h1>ログイン</h1>
+<h3>会員の方はこちらからログイン</h3>
+
+<%= form_with model: @user, url: user_session_path do |f| %>
+
+<%= f.label :メールアドレス %>
+<%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+
+<%= f.label :パスワード %>
+<%= f.password_field :password, autocomplete: "current-password", class: "form-control" %>
+
+<%= f.submit "ログイン" %>
+
+<% end %>
+
+<h4>会員登録がお済みでない方</h4>
+<%= link_to "こちら", new_user_registration_path %></span>から♬
