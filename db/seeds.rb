@@ -16,6 +16,8 @@ admins.each do |admin|
   end
 end
 
+
+       # 配列を表す↓
 prefectures = %w(
   北海道
   青森県

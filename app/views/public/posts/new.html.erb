@@ -17,7 +17,14 @@
       <div class="col-md-2">
         <div class="form-group">
           <%= f.label :dog_sex, "犬の性別" %>
-          <%= f.text_field :dog_sex, autocomplete: "dog_sex", class: "form-control" %>
+            <label>
+              <input type="radio" name="level" value="boy">
+              男
+            </label>
+            <label>
+              <input type="radio" name="level" value="lady">
+              女
+            </label>
         </div>
       </div>
     </div>

@@ -6,7 +6,7 @@ class Admin < ApplicationRecord
          
   def self.authenticate(email, password)
     # 特定の管理者のメールアドレスとパスワードの場合のみ認証を許可
-    if email == 'walky@time.com' && password == '123456'
+    if email == 'admin@example.com' && password == 'passw@rd'
       find_by(email: email)&.authenticate(password)
     else
       nil
@@ -15,7 +15,7 @@ class Admin < ApplicationRecord
 
   def admin?
     #管理者を判断する基準
-    email == 'walky@time.com'
+    email == 'admin@example.com'
   end
   
 end
