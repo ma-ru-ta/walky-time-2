@@ -1,2 +1,6 @@
-<h1>Public::Posts#show</h1>
-<p>Find me in app/views/public/posts/show.html.erb</p>
+<div class="container">
+  <h2><%= @post.dog_name %></h2>
+  <% if @post.post_image.attached? %>
+    <%= image_tag @post.post_image, class: "img-fluid" %>
+  <% end %>
+</div>

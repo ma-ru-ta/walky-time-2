@@ -12,22 +12,22 @@ Rails.application.routes.draw do
     root to: "homes#top"
     get 'home/about' => "homes#about", as: 'about'
 
-    resources :comments, only: [:new, :create, :destroy]
-    resources :posts, only: [:new, :create, :index, :show, :update, :destroy]
-    resources :favorites, only: [:index, :create, :destroy]
+    get "favorites" => "favorites#index"
+    resources :posts do
+      resources :comments, only: [:create, :destroy]
+      resource :favorites, only: [:create, :destroy]
+    end
     resources :users, only: [:show, :edit, :update, :check, :withdraw]
-    resources :sessions, only: [:new, :create, :destroy]
-    resources :registrations, only: [:new, :create]
   end
 
   namespace :admin do
     root to: 'homes#top'
 
-    resources :comments, only: [:index, :show, :destroy]
     resources :users, only: [:index, :show, :edit, :update]
     resources :genres, only: [:index, :edit, :update]
-    resources :posts, only: [:show, :edit, :update, :destroy]
-    resources :sessions, only: [:new, :create, :destroy]
+    resources :posts, only: [:show, :edit, :update, :destroy] do
+      resources :comments, only: [:index, :show, :destroy]
+    end
   end
 
 

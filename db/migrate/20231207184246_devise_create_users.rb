@@ -37,8 +37,8 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.1]
       t.string :address, null: false
       t.string :postal_code, null: false
       t.string :telephone_number, null: false
-      t.string :introduction, null: false
-      t.boolean :is_membership_status, null: false, default: true
+      t.string :introduction
+      t.boolean :is_active, null: false, default: true
 
       t.timestamps null: false
     end
