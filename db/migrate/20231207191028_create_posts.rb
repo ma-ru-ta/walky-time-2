@@ -4,7 +4,7 @@ class CreatePosts < ActiveRecord::Migration[6.1]
       t.integer :user_id, null: false
       t.string :dog_name, null: false
       t.string :dog_type, null: false
-      t.string :dog_sex, null: false
+      t.boolean :dog_sex, null: false, default: true
       t.date :day, null: false
       t.integer :prefecture_id, null: false
       t.string :city, null: false

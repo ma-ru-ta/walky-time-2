@@ -3,7 +3,13 @@
 
   <ul>
     <% @posts.each do |post| %>
-      <li><%= link_to post.dog_name, post_path(post) %></li>
+      <div class="col-3">
+      <%= link_to post.dog_name, post_path(post) %>
+      <%= link_to post.day, post_path(post) %>
+      <%= link_to post.prefecture.name, post_path(post) %>
+      <!--都道府県名を表示-->
+      </div>
     <% end %>
   </ul>
 </div>
+

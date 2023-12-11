@@ -70,7 +70,7 @@ ActiveRecord::Schema.define(version: 2023_12_10_065820) do
     t.integer "user_id", null: false
     t.string "dog_name", null: false
     t.string "dog_type", null: false
-    t.string "dog_sex", null: false
+    t.boolean "dog_sex", default: true, null: false
     t.date "day", null: false
     t.integer "prefecture_id", null: false
     t.string "city", null: false

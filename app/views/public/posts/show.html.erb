@@ -1,6 +1,7 @@
 <div class="container">
-  <h2><%= @post.dog_name %></h2>
-  <% if @post.post_image.attached? %>
-    <%= image_tag @post.post_image, class: "img-fluid" %>
-  <% end %>
-</div>
+  <h4>投稿詳細画面</h4>
+    <h2><%= @post.dog_name %></h2>
+      <% if @post.post_image.attached? %>
+        <%= image_tag @post.post_image, class: "img-fluid" %>
+      <% end %>
+    </div>
