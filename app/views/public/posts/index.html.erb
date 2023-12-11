@@ -3,6 +3,9 @@
 
   <ul>
     <% @posts.each do |post| %>
+    <div class = "col-2 ml-lg-6 pt-5 mt-2">
+      <%= image_tag @post.post_image, class: "img-fluid" %>
+    </div>
       <div class="col-3">
       <%= link_to post.dog_name, post_path(post) %>
       <%= link_to post.day, post_path(post) %>
@@ -12,4 +15,5 @@
     <% end %>
   </ul>
 </div>
+
 

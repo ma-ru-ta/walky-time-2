@@ -1,7 +1,76 @@
-<div class="container">
-  <h4>投稿詳細画面</h4>
-    <h2><%= @post.dog_name %></h2>
-      <% if @post.post_image.attached? %>
-        <%= image_tag @post.post_image, class: "img-fluid" %>
-      <% end %>
+<div class="container px-5 px-sm-0">
+  <div class="row">
+
+    <h4>投稿詳細画面</h4>
+
+    <div class = "row">
+      <div class = "col-4 ml-lg-6 pt-5 mt-2">
+        <% if @post.post_image.attached? %>
+          <%= image_tag @post.post_image, class: "img-fluid" %>
+        <% end %>
+      </div>
+      <div class = "col-8 form-group mt-5" >
+          <div class="box17">
+            <div class = "row my-lg-1">
+              <div class = col-3 , style="color: #48120E">
+                愛犬の名前
+              </div>
+              <div class = "col-lg-9", style="color: #48120E">
+                <h5><%= @post.dog_name %></h5>
+              </div>
+            </div>
+            <div class = "row my-lg-4", style="color: #48120E">
+              <div class = col-3>
+                犬種
+              </div>
+            <div class = "col-9", style="color: #48120E">
+              <h5><%= @post.dog_type %></h5>
+            </div>
+            </div>
+            <div class = "row my-lg-4", style="color: #48120E">
+              <div class = col-3>
+                お散歩希望の日程
+              </div>
+              <div class = "col-9", style="color: #48120E">
+                <h5><%= @post.day %></h5>
+              </div>
+            </div>
+            <div class = "row my-lg-4", style="color: #48120E">
+              <div class = col-3>
+                都道府県
+              </div>
+            <div class = "col-9", style="color: #48120E">
+              <h5><%= @post.prefecture.name %></h5>
+            </div>
+            </div>
+            <div class = "row my-lg-4", style="color: #48120E">
+              <div class = col-3>
+                市町村
+              </div>
+            <div class = "col-9", style="color: #48120E">
+              <h5><%= @post.city %></h5>
+            </div>
+            </div>
+            <div class = "row my-lg-4", style="color: #48120E">
+              <div class = col-3>
+                紹介文・条件
+              </div>
+            <div class = "col-9", style="color: #48120E">
+              <h5><%= @post.post_body %></h5>
+            </div>
+            </div>
     </div>
+
+
+
+
+
+
+    <div class = "row" >
+        <% if @post.user == current_user %>
+          <td><%= link_to "Edit", edit_post_path(@post), class:"btn btn-sm btn-success rounded-pill" %></td>
+          <td><%= link_to "Destroy", post_path, method: :delete, class:"btn btn-sm btn-danger rounded-pill" %></td>
+        <% end %>
+    </div>
+
+</div>
