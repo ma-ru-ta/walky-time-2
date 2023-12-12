@@ -9,16 +9,18 @@ class Public::PostsController < ApplicationController
     if @post.save
       redirect_to posts_path
     else
-      render :new
+      @posts = Post.all
+      render :index
     end
   end
 
   def index
-    @posts = Post.all
+    @posts = Post.page(params[:page])
   end
 
   def show
     @post = Post.find(params[:id])
+    @book_comment = Comment.new
   end
 
   def edit

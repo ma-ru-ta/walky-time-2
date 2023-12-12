@@ -1,8 +1,8 @@
 <div class="container">
-  <h2>New Post</h2>
-  <%= form_with model: @post, url: posts_path, method: :post do |f| %>
+  <h3>新規投稿<i class="fa-solid fa-dog"></i></h3>
+        <%= form_with model: @post, url: posts_path, method: :post do |f| %>
     <div class="row">
-      <div class="col-md-5">
+      <div class="col-md-4">
         <div class="form-group">
           <%= f.label :dog_name, "犬の名前" %>
           <%= f.text_field :dog_name, autofocus: true, autocomplete: "dog_name", class: "form-control" %>
@@ -18,12 +18,14 @@
         </div>
       </div>  
     </div>
-      <div class="col-md-5">
+    
+      <div class="col-md-4">
         <div class="form-group">
           <%= f.label :dog_type, "犬種" %>
           <%= f.text_field :dog_type, autocomplete: "dog_sex", class: "form-control" %>
         </div>
       </div>
+    
     
 
     <div class="row">
