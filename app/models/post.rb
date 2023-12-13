@@ -1,5 +1,5 @@
 class Post < ApplicationRecord
-  has_many :commets, dependent: :destroy
+
   belongs_to :user
   belongs_to :prefecture
 

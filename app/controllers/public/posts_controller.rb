@@ -20,7 +20,7 @@ class Public::PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
-    @book_comment = Comment.new
+    @post_comment = Comment.new
   end
 
   def edit
