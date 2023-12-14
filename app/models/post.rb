@@ -4,6 +4,7 @@ class Post < ApplicationRecord
   belongs_to :prefecture
 
   has_many :comments, dependent: :destroy
+  has_many :favorites, dependent: :destroy
 
   has_one_attached :post_image
 
@@ -15,5 +16,9 @@ class Post < ApplicationRecord
   validates :prefecture_id, presence: true
   validates :city, presence: true
   validates :post_body, presence: true, length:{maximum:200}
+
+  def favorited_by?(user)
+    favorites.exists?(user_id: user.id)
+  end
 
 end

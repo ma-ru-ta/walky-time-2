@@ -15,7 +15,7 @@ Rails.application.routes.draw do
     get "favorites" => "favorites#index"
     resources :posts do
       resources :comments, only: [:create, :destroy]
-      resource :favorites, only: [:create, :destroy]
+      resource :favorite, only: [:create, :destroy] #１つの投稿に対してだから単数形
     end
     resources :users, only: [:show, :edit, :update, :check, :withdraw]
   end
@@ -31,6 +31,6 @@ Rails.application.routes.draw do
   end
 
 
-
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
+

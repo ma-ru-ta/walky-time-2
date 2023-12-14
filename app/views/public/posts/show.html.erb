@@ -24,9 +24,9 @@
         <div class = col-3>
           犬種
         </div>
-      <div class = "col-9">
-        <h5><%= @post.dog_type %></h5>
-      </div>
+        <div class = "col-9">
+          <h5><%= @post.dog_type %></h5>
+        </div>
       </div>
 
       <div class = "row my-lg-4">
@@ -42,18 +42,18 @@
         <div class = col-3>
           都道府県
         </div>
-      <div class = "col-9">
-        <h5><%= @post.prefecture.name %></h5>
-      </div>
+        <div class = "col-9">
+          <h5><%= @post.prefecture.name %></h5>
+        </div>
       </div>
 
       <div class = "row my-lg-4">
         <div class = col-3>
           市町村
+          </div>
+        <div class = "col-9">
+          <h5><%= @post.city %></h5>
         </div>
-      <div class = "col-9">
-        <h5><%= @post.city %></h5>
-      </div>
       </div>
 
       <div class = "row my-lg-4">
@@ -64,7 +64,6 @@
         <h5><%= @post.post_body %></h5>
       </div>
       </div>
-
     </div>
 
       <div class = "row" >
@@ -75,19 +74,41 @@
       </div>
   </div>
 
-  <div class= "row">
-    <h3>コメント</h3>
-    <% @post.comments.each do |comment| %>
-      <%= comment.user.user_name %>
-      <%= comment.created_at.strftime('%Y/%m/%d') %><%= comment.body %>
-                                                    <!--commentテーブルにあるカラム-->
-    <% end %>
+  <div class="row">
+    <div class="col-10">
+      <h3>コメント</h3>
+      <% @post.comments.each do |comment| %>
+        <%= comment.user.user_name %>
+        <%= comment.created_at.strftime('%Y/%m/%d') %><%= comment.body %>
+                                                       <!--commentテーブルにあるカラム-->
+      <% end %>
 
-    <%= form_with model: [@post, @post_comment] do |f| %>
-      <%= f.text_area :body, placeholder: "コメントをここに★" %>
-      <%= f.submit "送信する" %>
-    <% end %>
+      <div class="new-comment card-text">
+        <%= form_with model: [@post, @post_comment] do |f| %>
+          <div class="form-group">
+            <%= f.text_area :body, placeholder: "コメントをここに★" %>
+            <%= f.submit "送信する" %>
+        <% end %>
+          </div>
+      </div>
+    </div>
   </div>
+
+
+   <% if @post.favorited_by?(current_user) %>
+    <p>
+      <%= link_to post_favorite_path(@post), method: :delete do %>
+        ♥<%= @post.favorites.count %> いいね
+      <% end %>
+    </p>
+    <% else %>
+    <p>
+      <%= link_to post_favorite_path(@post), method: :post do %>
+        ♡<%= @post.favorites.count %> いいね
+      <% end %>
+    </p>
+  <% end %>
+
 
 </div>
 
