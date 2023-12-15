@@ -1,9 +1,9 @@
 <div class="container">
   <div class="row">
     <div class="col-md-6 mx-auto">
-      <h3>管理者ログイン</h1>
+      <h3>管理者ログイン</h3>
 
-　　　<%= form_with model: @admin, url: admin_session_path do |f| %>
+      <%= form_with model: @admin, url: admin_session_path do |f| %>
         <div class="form-group">
           <%= f.label :メールアドレス %>
           <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
@@ -12,8 +12,8 @@
           <%= f.label :パスワード %>
           <%= f.password_field :password, autocomplete: "current-password", class: "form-control" %>
         </div>
-        <div class="form-group"> 
-        <%= f.submit "ログイン", class: "btn btn-primary rounded-pill" %>
+        <div class="form-group">
+          <%= f.submit "ログイン", class: "btn btn-primary rounded-pill" %>
         </div>
       <% end %>
     </div>

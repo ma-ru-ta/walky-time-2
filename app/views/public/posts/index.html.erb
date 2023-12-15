@@ -8,9 +8,10 @@
         <div class="card-body">
           <ul class="list-unstyled">
             <li><%= link_to "すべてを表示", posts_path %></li>
-            <% @prefectures.each do |prefecture| %>
+            <% @prefectures.each do |prefecture| %>  
               <li><%= link_to prefecture.name, posts_path(prefecture: prefecture.id) %></li>
             <% end %>
+            <!--都道府県一覧はdb/seedに記述-->
           </ul>
         </div>
       </div>

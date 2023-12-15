@@ -1,5 +1,21 @@
 <div class="container">
   <div class="row">
+    <div class="col-md-3 mb-3 mb-mb-0">
+      <div class="card">
+        <div class="card-header">
+          <i class="fa-solid fa-map-pin"></i> 都道府県 <i class="fa-solid fa-map-pin"></i>
+        </div>
+        <div class="card-body">
+          <ul class="list-unstyled">
+            <li><%= link_to "すべてを表示", posts_path %></li>
+            <% @prefectures.each do |prefecture| %>  
+              <li><%= link_to prefecture.name, posts_path(prefecture: prefecture.id) %></li>
+            <% end %>
+            <!--都道府県一覧はdb/seedに記述-->
+          </ul>
+        </div>
+      </div>
+    </div>
     
       <h4 class="text-center", style="color: #48120E">
         <i class="fa-solid fa-cookie-bite" style="color: #b37039;"></i>
@@ -13,7 +29,7 @@
           <tr>
             <th>投稿日時</th>
             <th>ユーザー名</th>
-            <th>コメント</th>
+            <th>都道府県</th>
           </tr>
         </thead>
         <tbody>
@@ -27,6 +43,11 @@
               <td>
                 <%= link_to admin_post_path(post.id) do %>
                 　<%= post.user.user_name %>
+                <% end %>
+              </td>
+              <td>
+                <%= link_to admin_post_path(post.id) do %>
+                  <%= post.prefecture.name %>
                 <% end %>
               </td>
             </tr>
