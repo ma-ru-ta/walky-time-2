@@ -17,8 +17,16 @@ class Post < ApplicationRecord
   validates :city, presence: true
   validates :post_body, presence: true, length:{maximum:200}
 
+  # def favorited_by?(user)
+  #   favorites.exists?(user_id: user.id)
+  # end
+
   def favorited_by?(user)
-    favorites.exists?(user_id: user.id)
+    user.present? && favorites.exists?(user_id: user.id)
+  end
+
+  def get_post_image(width, height)
+    post_image.variant(resize_to_limit: [width, height]).processed
   end
 
 end

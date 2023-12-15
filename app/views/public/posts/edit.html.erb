@@ -1,32 +1,32 @@
 <div class="container">
   <h1>編集画面</h1>
+    <%= form_with model: @post, url: post_path(@post.id), method: :patch do |f| %>
+
     <div class="row">
       <div class="col-md-5">
        <div class="form-group">
-         <%= form_with model: @post, url: posts_path, method: :patch do |f| %>
-  
            <%= f.label :dog_name, "犬の名前" %>
            <%= f.text_field :dog_name, autofocus: true, autocomplete: "dog_name", class: "form-control" %>
         </div>
       </div>
-        
-        <div class="col-md-2">
-          <div class="form-group">
-            <%= f.label :dog_sex, "犬の性別" %>
-              <div>
-                <%= f.radio_button :dog_sex, true %> ♂
-                <%= f.radio_button :dog_sex, false %> ♀
-              </div>
-          </div>
-        </div>  
-    </div>
-    <div class="row">   
-        <div class="col-md-5">
-          <div class="form-group">
-            <%= f.label :dog_type, "犬種" %>
-            <%= f.text_field :dog_type, autocomplete: "dog_sex", class: "form-control" %>
-          </div>
+
+      <div class="col-md-2">
+        <div class="form-group">
+          <%= f.label :dog_sex, "犬の性別" %>
+            <div>
+              <%= f.radio_button :dog_sex, true %> ♂
+              <%= f.radio_button :dog_sex, false %> ♀
+            </div>
         </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-5">
+        <div class="form-group">
+          <%= f.label :dog_type, "犬種" %>
+          <%= f.text_field :dog_type, autocomplete: "dog_sex", class: "form-control" %>
+        </div>
+      </div>
     </div>
 
     <div class="row">
@@ -58,7 +58,14 @@
       <%= f.text_area :post_body, class:"form-control post_body" %>
     </div>
 
-  <span class="text-center pr-4"><%= f.submit '編集内容を保存',class:"btn btn-light rounded-pill" %></span>
+    <div class="form-group">
+      <div class="row">
+        <div class="col-md-5 mx-auto">
+          <%= f.submit '編集内容を保存',class:"btn btn-light rounded-pill" %>
+        </div>
+      </div>
+    </div>
 
   <% end %>
 </div>
+

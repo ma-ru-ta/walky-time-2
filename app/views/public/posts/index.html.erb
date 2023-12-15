@@ -1,22 +1,28 @@
 <div class="container">
-  <h3><i class="fa-solid fa-paw"></i>お散歩一覧<i class="fa-solid fa-paw"></i></h3>
-
-  <ul>
-    <% @posts.each do |post| %>
-    <div class = "col-2 ml-lg-6 pt-5 mt-2">
-    <% if post.post_image.attached? %>
-      <%= image_tag post.post_image, size: "900×50", class: "img-fluid" %>
-    <% end %>
-    </div>
-      <div class="col-3">
-        <%= link_to post.dog_name, post_path(post) %>
-        <%= link_to post.day, post_path(post) %>
-        <%= link_to post.prefecture.name, post_path(post) %>
-      <!--都道府県名を表示-->
+  <div class="row">
+    <div class="col-md-3 mb-3 mb-mb-0">
+      <div class="card">
+        <div class="card-header">
+          <i class="fa-solid fa-map-pin"></i> 都道府県 <i class="fa-solid fa-map-pin"></i>
+        </div>
+        <div class="card-body">
+          <ul class="list-unstyled">
+            <li><%= link_to "すべてを表示", posts_path %></li>
+            <% @prefectures.each do |prefecture| %>
+              <li><%= link_to prefecture.name, posts_path(prefecture: prefecture.id) %></li>
+            <% end %>
+          </ul>
+        </div>
       </div>
-    <% end %>
-    <%= paginate @posts %>
-  </ul>
+    </div>
+    <div class="col-md-9">
+      <h3><i class="fa-solid fa-paw"></i>お散歩一覧<i class="fa-solid fa-paw"></i></h3>
+
+       <%= render 'index', posts: @posts %>
+
+      <%= paginate @posts %>
+    </div>
+  </div>
 </div>
 
 

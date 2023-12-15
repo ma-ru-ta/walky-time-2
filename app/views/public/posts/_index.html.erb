@@ -1,0 +1,22 @@
+<div class="row">
+  <% posts.each do |post| %>
+    <div class="col-md-4 mb-3">
+      <% if post.post_image.attached? %>
+        <%= image_tag post.get_post_image(300, 300), class: "img-fluid post-card-img" %>
+      <% end %>
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">
+            <%= link_to post.dog_name, post_path(post) %>
+          </h5>
+          <p class="m-0">
+            <%= link_to post.day.strftime("%Y年%m月%d日"), post_path(post) %>
+          </p>
+          <p class="m-0">
+            <%= link_to post.prefecture.name, post_path(post) %>
+          </p>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

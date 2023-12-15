@@ -1,2 +1,36 @@
-<h1>Public::Users#show</h1>
-<p>Find me in app/views/public/users/show.html.erb</p>
+<div class="container">
+  
+  <div class = "row d-flex justify-content-center">
+    <font size="10"><i class="fa-regular fa-star"></i> マイページ <i class="fa-regular fa-star"></i></font>
+  </div>
+
+  <div class="row">
+    <div class="col text-center p-4 h-100 w-100">
+      <table class="table table-bordered", style="color:#48120E;">
+        <tbody>
+
+          <tr>
+            <td>ユーザー名</td>
+            <td><%= @user.user_name %></td>
+          </tr>
+
+          <tr>
+            <td>自己紹介</td>
+            <td><%= @user.introduction %></td>
+          </tr>
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class = "row d-flex justify-content-center">
+    <span class=""><%= link_to " 編 集 す る ", edit_user_path, class:"btn font-bold rounded-pill", style: "background-color: #ffe9a9; color: #1A120B;" %></span>
+  </div>
+  
+  <div class="row">
+    <div class="col text-center p-4 h-100 w-100">
+      <%= render 'public/posts/index', posts: @posts %>
+    </div>
+  </div>
+  
+</div>

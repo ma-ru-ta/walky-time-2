@@ -2,11 +2,11 @@
   <div class="row">
     <div class="fixed-top p-2", style = "background-color: rgba(255, 255, 255, 0.8);">
       <div class="d-flex content-between align-items-center md-4 ">
-        
+
         <div class="btn-group ml-auto">
           <ul class="nav justify-content-center">
             <% if user_signed_in? %>
-              <li class="nav-item"><%= link_to "マイページ", root_path %></li>
+              <li class="nav-item"><%= link_to "マイページ", user_path(current_user) %></li>
               <li class="nav-item"><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
               <li class="nav-item"><%= link_to "投稿一覧", posts_path %></li>
               <li class="nav-item"><%= link_to "お気に入り一覧", favorites_path %></li>
@@ -18,9 +18,9 @@
               <li class="nav-item"><%= link_to "投稿一覧", posts_path %></li>
               <li class="nav-item"><%= link_to "About", about_path %></li>
             <% end %>
-          </ul>  
+          </ul>
         </div>
-        
+
       </div>
     </div>
   </div>

@@ -1,113 +1,106 @@
-<div class="container px-5 px-sm-0">
-  <div class="row">
-    <h4>投稿詳細画面</h4>
-  </div>
+<div class="container">
+  <h4>投稿詳細画面</h4>
 
   <div class = "row">
-    <div class = "col-4 ml-lg-6 pt-5 mt-2">
+    <div class = "col-4">
       <% if @post.post_image.attached? %>
-        <%= image_tag @post.post_image, class: "img-fluid" %>
+        <%= image_tag @post.get_post_image(600, 600), class: "img-fluid post-card-img" %>
       <% end %>
     </div>
 
-    <div class = "col-8 form-group mt-5" >
-      <div class = "row my-lg-1">
-        <div class = col-3 , style="color: #48120E">
+    <div class = "col-md-8 mb-2" >
+      <div class = "row">
+        <div class = col-md-3 , style="color: #48120E">
           愛犬の名前
         </div>
-        <div class = "col-lg-9">
+        <div class = "col-md-9">
           <h5><%= @post.dog_name %></h5>
         </div>
       </div>
 
-      <div class = "row my-lg-4">
-        <div class = col-3>
+      <div class = "row mb-2">
+        <div class = col-md-3>
           犬種
         </div>
-        <div class = "col-9">
+        <div class = "col-md-9">
           <h5><%= @post.dog_type %></h5>
         </div>
       </div>
 
-      <div class = "row my-lg-4">
-        <div class = col-3>
+      <div class = "row mb-2">
+        <div class = col-md-3>
           お散歩希望日
         </div>
-        <div class = "col-9">
+        <div class = "col-md-9">
           <h5><%= @post.day %></h5>
         </div>
       </div>
 
-      <div class = "row my-lg-4">
-        <div class = col-3>
+      <div class = "row mb-2">
+        <div class = "col-md-3">
           都道府県
         </div>
-        <div class = "col-9">
+        <div class = "col-md-9">
           <h5><%= @post.prefecture.name %></h5>
         </div>
       </div>
 
-      <div class = "row my-lg-4">
-        <div class = col-3>
+      <div class = "row mb-2">
+        <div class = col-md-3>
           市町村
           </div>
-        <div class = "col-9">
+        <div class = "col-md-9">
           <h5><%= @post.city %></h5>
         </div>
       </div>
 
-      <div class = "row my-lg-4">
-        <div class = col-3>
+      <div class = "row">
+        <div class = col-md-3>
           紹介文・条件
         </div>
-      <div class = "col-9">
-        <h5><%= @post.post_body %></h5>
+        <div class = "col-md-9">
+          <h5><%= simple_format(@post.post_body, class: "m-0") %></h5>
+        </div>
       </div>
-      </div>
-    </div>
 
-      <div class = "row" >
+      <div>
+        <% if @post.favorited_by?(current_user) %>
+        <p>
+          <%= link_to post_favorite_path(@post), method: :delete do %>
+            ♥<%= @post.favorites.count %> いいね
+          <% end %>
+        </p>
+        <% else %>
+        <p>
+          <%= link_to post_favorite_path(@post), method: :post do %>
+            ♡<%= @post.favorites.count %> いいね
+          <% end %>
+        </p>
+          <% end %>
+
         <% if @post.user == current_user %>
           <div><%= link_to "Edit", edit_post_path(@post), class:"btn btn-sm btn-success" %></div>
           <div><%= link_to "Destroy", post_path, method: :delete, class:"btn btn-sm btn-danger" %></div>
         <% end %>
       </div>
-  </div>
 
-  <div class="row">
-    <div class="col-10">
+    </div>
+  </div>
       <h3>コメント</h3>
+
+      <div>
+        <%= form_with model: [@post, @post_comment] do |f| %>
+          <div class="form-group">
+            <%= f.text_area :body, placeholder: "コメントをここに★" ,  rows: 5, class: "form-control"%>
+                <%= f.submit "送信する" %>
+            <% end %>
+          </div>
+      </div>
       <% @post.comments.each do |comment| %>
         <%= comment.user.user_name %>
         <%= comment.created_at.strftime('%Y/%m/%d') %><%= comment.body %>
                                                        <!--commentテーブルにあるカラム-->
       <% end %>
-
-      <div class="new-comment card-text">
-        <%= form_with model: [@post, @post_comment] do |f| %>
-          <div class="form-group">
-            <%= f.text_area :body, placeholder: "コメントをここに★" %>
-            <%= f.submit "送信する" %>
-        <% end %>
-          </div>
-      </div>
-    </div>
-  </div>
-
-
-   <% if @post.favorited_by?(current_user) %>
-    <p>
-      <%= link_to post_favorite_path(@post), method: :delete do %>
-        ♥<%= @post.favorites.count %> いいね
-      <% end %>
-    </p>
-    <% else %>
-    <p>
-      <%= link_to post_favorite_path(@post), method: :post do %>
-        ♡<%= @post.favorites.count %> いいね
-      <% end %>
-    </p>
-  <% end %>
 
 
 </div>

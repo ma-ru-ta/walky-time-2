@@ -1,5 +1,5 @@
 <div class="container">
-  <h3>新規投稿<i class="fa-solid fa-dog"></i></h3>
+  <h3><i class="fa-solid fa-pen" style="color: #494a50;"></i> New Post <i class="fa-solid fa-pen" style="color: #494a50;"></i></h3>
         <%= form_with model: @post, url: posts_path, method: :post do |f| %>
     <div class="row">
       <div class="col-md-4">
@@ -16,17 +16,17 @@
               <%= f.radio_button :dog_sex, false %> ♀
             </div>
         </div>
-      </div>  
+      </div>
     </div>
-    
+
       <div class="col-md-4">
         <div class="form-group">
           <%= f.label :dog_type, "犬種" %>
           <%= f.text_field :dog_type, autocomplete: "dog_sex", class: "form-control" %>
         </div>
       </div>
-    
-    
+
+
 
     <div class="row">
       <div class="col-md-4">
