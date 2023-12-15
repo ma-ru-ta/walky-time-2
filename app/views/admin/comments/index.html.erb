@@ -1,10 +1,10 @@
 <div class="container">
   <div class="row">
-    
+
       <h4 class="text-center", style="color: #48120E">
-        <i class="fa-solid fa-cookie-bite" style="color: #b37039;"></i>
-          投稿一覧
-        <i class="fa-solid fa-cookie-bite" style="color: #b37039;"></i>
+        <i class="fa-regular fa-comment" style="color: #000000;"></i>
+         コメント一覧
+        <i class="fa-regular fa-comment" style="color: #000000;"></i>
        </h4>
 
     <div class = "mt-4 pt-3">
@@ -13,19 +13,19 @@
           <tr>
             <th>投稿日時</th>
             <th>ユーザー名</th>
-            <th>コメント</th>
+            <th>コメント内容</th>
           </tr>
         </thead>
         <tbody>
-          <% @posts.each do |post| %>
+          <% @comments.each do |comment| %>
             <tr>
               <td>
-                <%= link_to admin_post_path(post.id) do %>
+                <%= link_to admin_post_comments_path(comment.id) do %>
                 　<%= post.created_at.strftime("%Y/%m/%d %H:%M") %>
                 <% end %>
               </td>
               <td>
-                <%= link_to admin_post_path(post.id) do %>
+                <%= link_to admin_post_comments(comment.id) do %>
                 　<%= post.user.user_name %>
                 <% end %>
               </td>
@@ -35,7 +35,7 @@
       </table>
     </div>
 
-      <%= paginate @posts %>
+      <%= paginate @comments %>
     </div>
   </div>
 </div>
