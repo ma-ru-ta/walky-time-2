@@ -18,6 +18,10 @@ class Admin::UsersController < ApplicationController
       render :edit
     end
   end
+  
+  def withdrw
+    
+  end
 
 
   protected

@@ -11,14 +11,26 @@ Rails.application.routes.draw do
   scope module: :public do
     root to: "homes#top"
     get 'home/about' => "homes#about", as: 'about'
-
     get "favorites" => "favorites#index"
     resources :posts do
       resources :comments, only: [:create, :destroy]
       resource :favorite, only: [:create, :destroy] #１つの投稿に対してだから
     end
-    resources :users, only: [:show, :edit, :update, :check, :withdraw]
+    
+    resources :users, only: [:show, :edit, :update] do
+      collection do 
+        patch :withdraw
+        get :check
+      end
+      #↑ユーザー関連はcollectionを使うと良い！
+      #   menberブロックを使用すると:idが取得される
+      #     →既に自分の:idでユーザー編集（edit）に遷移するから余計な:idは付けない方が良い！
+      #        働いたとき他のチーム開発したエンジニアに裏を読まれ混乱させてしまう可能性有り
+    end
+    
   end
+  
+
 
   namespace :admin do
 

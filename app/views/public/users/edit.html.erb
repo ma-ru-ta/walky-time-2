@@ -1,9 +1,8 @@
 <div class="container">
+   <%= form_with model:@user, url: user_path(@user.id), method: :patch do |f| %>
   <div class="row">
     <div class="col-md-6 mx-auto">
       <h2>ユーザー編集ページ</h2>
-
-      <%= form_with model:@user, url: user_path(@user.id), method: :patch do |f| %>
 
         <div class="form-group">
           <%= f.label :real_name, "名前" %>
@@ -34,16 +33,12 @@
           <%= f.text_field :introduction, class: "form-control" %>
         </div>
 
-        <div class="form-group">
-          <div class="row">
-            <div class="col-md-5 mx-auto">
-              <%= f.submit " 編 集 を 保 存 ", class:"btn font-bold rounded-pill", style: "background-color: #ffaa00; color: #1A120B;" %>
-              <%= f.submit "退会する", user_check_path,class:"btn btn-light", style: "background-color: #f5b1aa; color: #664e3d;" %>
-            </div>
-          </div>
+        <div class="form-row justify-comtent-center">
+          <%= f.submit " 編 集 を 保 存 ", class:"btn font-bold rounded-pill", style: "background-color: #ffaa00; color: #664e3d;" %>
+          <span class="text-center"><%= link_to "退 会 す る", check_users_path,class:"btn btn-light rounded-pill",style: "background-color: #ffe9a9; color: #664e3d;" %></span>
         </div>
-      <% end %>
 
+      </div>
     </div>
   </div>
-</div>
+<% end %>

@@ -22,7 +22,7 @@ class Public::UsersController < ApplicationController
 
   def withdraw
     @user = current_user
-    if @user.update(is_active_status: false)
+    if @user.update(is_active: false)
       sign_out(@user)
        redirect_to root_path
     end

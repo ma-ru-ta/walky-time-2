@@ -1,6 +1,7 @@
 class Admin::CommentsController < ApplicationController
   def index
     @comments = Comment.page(params[:page])
+    @post = Post.find(params[:id])
   end
 
   def show
@@ -8,4 +9,6 @@ class Admin::CommentsController < ApplicationController
 
   def destroy
   end
+
+
 end
