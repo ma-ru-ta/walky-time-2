@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-3 mb-3 mb-mb-0">
+    <div class="col-md-2 mb-3 mb-mb-0">
       <div class="card">
         <div class="card-header">
           <i class="fa-solid fa-map-pin"></i> 都道府県 <i class="fa-solid fa-map-pin"></i>
@@ -8,7 +8,7 @@
         <div class="card-body">
           <ul class="list-unstyled">
             <li><%= link_to "すべてを表示", posts_path %></li>
-            <% @prefectures.each do |prefecture| %>  
+            <% @prefectures.each do |prefecture| %>
               <li><%= link_to prefecture.name, posts_path(prefecture: prefecture.id) %></li>
             <% end %>
             <!--都道府県一覧はdb/seedに記述-->
@@ -16,47 +16,44 @@
         </div>
       </div>
     </div>
-    
+    <div class="col-10">
       <h4 class="text-center", style="color: #48120E">
         <i class="fa-solid fa-cookie-bite" style="color: #b37039;"></i>
           投稿一覧
         <i class="fa-solid fa-cookie-bite" style="color: #b37039;"></i>
        </h4>
-
-    <div class = "mt-4 pt-3">
-      <table class="table table-bordered">
-        <thead>
-          <tr>
-            <th>投稿日時</th>
-            <th>ユーザー名</th>
-            <th>都道府県</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @posts.each do |post| %>
+  
+      <div class = "mt-4 pt-3">
+        <table class="table table-bordered">
+          <thead>
             <tr>
-              <td>
-                <%= link_to admin_post_path(post.id) do %>
-                　<%= post.created_at.strftime("%Y/%m/%d %H:%M") %>
-                <% end %>
-              </td>
-              <td>
-                <%= link_to admin_post_path(post.id) do %>
-                　<%= post.user.user_name %>
-                <% end %>
-              </td>
-              <td>
-                <%= link_to admin_post_path(post.id) do %>
-                  <%= post.prefecture.name %>
-                <% end %>
-              </td>
+              <th>投稿日時</th>
+              <th>ユーザー名</th>
+              <th>都道府県</th>
             </tr>
-          <% end %>
-        </tbody>
-      </table>
-    </div>
-
-      <%= paginate @posts %>
+          </thead>
+          <tbody>
+            <% @posts.each do |post| %>
+              <tr>
+                <td>
+                  <%= link_to admin_post_path(post.id) do %>
+                    <%= post.created_at.strftime("%Y/%m/%d %H:%M") %>
+                  <% end %>
+                </td>
+                <td>
+                  <%= post.user.user_name %>
+                </td>
+                <td>
+                  <%= post.prefecture.name %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
+    <div>
+      <%= paginate @posts %>
+    </div>
 </div>

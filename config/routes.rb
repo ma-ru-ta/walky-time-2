@@ -4,9 +4,12 @@ Rails.application.routes.draw do
     registrations: "public/registrations",
     sessions: 'public/sessions'
   }
+  
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     sessions: "admin/sessions"
   }
+  
+  
 
   scope module: :public do
     root to: "homes#top"
@@ -28,6 +31,10 @@ Rails.application.routes.draw do
       #        働いたとき他のチーム開発したエンジニアに裏を読まれ混乱させてしまう可能性有り
     end
     
+    # ゲストユーザーログイン
+    devise_scope :user do
+      post 'users/guest_sign_in', to: 'sessions#guest_sign_in'
+    end
   end
   
 
@@ -37,8 +44,9 @@ Rails.application.routes.draw do
     resources :users, only: [:index, :show, :edit, :update]
     resources :genres, only: [:index, :edit, :update]
     resources :posts, only: [:index, :show, :edit, :update, :destroy] do
-      resources :comments, only: [:index, :show, :destroy]
+      resources :comments, only: [:show, :destroy]
     end
+    resources :comments, only: [:index]
   end
 
 

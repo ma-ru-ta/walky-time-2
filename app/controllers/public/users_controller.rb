@@ -1,6 +1,6 @@
 class Public::UsersController < ApplicationController
   def show
-    @user = current_user
+    @user = User.find(params[:id])
     @posts = @user.posts
   end
 
@@ -20,12 +20,19 @@ class Public::UsersController < ApplicationController
   def check
   end
 
+  # def withdraw
+  #   @user = current_user
+  #   if @user.update(is_active: false)
+  #     sign_out(@user)
+  #     redirect_to root_path
+  #   end
+  # end
+  
   def withdraw
     @user = current_user
-    if @user.update(is_active: false)
-      sign_out(@user)
-       redirect_to root_path
-    end
+    @user.update(is_active: false)
+    reset_session
+    redirect_to new_user_registration_path
   end
 
 

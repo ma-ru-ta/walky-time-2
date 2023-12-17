@@ -1,7 +1,7 @@
 <div class="container">
   
   <div class = "row d-flex justify-content-center">
-    <font size="10"><i class="fa-regular fa-star"></i> マイページ <i class="fa-regular fa-star"></i></font>
+    <font size="10"><i class="fa-regular fa-star"></i><%= @user.user_name %>のページ<i class="fa-regular fa-star"></i></font>
   </div>
 
   <div class="row">
@@ -24,7 +24,9 @@
     </div>
   </div>
   <div class = "row d-flex justify-content-center">
+    <% if @user.id == current_user.id %>
     <span class=""><%= link_to " 編 集 す る ", edit_user_path, class:"btn font-bold rounded-pill", style: "background-color: #ffe9a9; color: #1A120B;" %></span>
+    <% end %>
   </div>
   
   <div class="row">

@@ -5,9 +5,14 @@ class Admin::UsersController < ApplicationController
   end
 
   def show
+    @user = User.find(params[:id])
   end
 
   def edit
+    @user = User.find_by(id: params[:id])
+    if @user.nil?
+      # もしユーザーが存在しない場合の処理を追加
+    end
   end
 
   def update
@@ -18,9 +23,9 @@ class Admin::UsersController < ApplicationController
       render :edit
     end
   end
-  
+
   def withdrw
-    
+
   end
 
 

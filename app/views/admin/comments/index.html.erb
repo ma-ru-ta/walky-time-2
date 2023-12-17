@@ -11,23 +11,30 @@
       <table class="table table-bordered">
         <thead>
           <tr>
-            <th>投稿日時</th>
+            <th>コメント日時</th>
             <th>ユーザー名</th>
             <th>コメント内容</th>
+            <td>投稿ユーザー</td>
           </tr>
         </thead>
         <tbody>
           <% @comments.each do |comment| %>
             <tr>
               <td>
-                <%= link_to admin_post_comments_path(comment.id) do %>
-                  <%= post.created_at.strftime("%Y/%m/%d %H:%M") %>
+                <%= link_to admin_post_path(id: comment.post_id) do %>
+                  <%= comment.created_at.strftime("%Y/%m/%d %H:%M") %>
                 <% end %>
               </td>
               <td>
-                <%= link_to admin_post_comments(comment.id) do %>
-                  <%= post.user.user_name %>
+                <%= link_to admin_user_path(id: comment.user_id) do %>
+                  <%= comment.user.user_name %>
                 <% end %>
+              </td>
+              <td>
+                <%= comment.body.truncate(24, omission: '...') %>
+              </td>
+              <td>
+                <%= comment.post.user.user_name%>
               </td>
             </tr>
           <% end %>

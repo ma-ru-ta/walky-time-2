@@ -1,7 +1,7 @@
 <div class="container">
-  
+
   <div class = "row d-flex justify-content-center">
-    <font size="10"><i class="fa-regular fa-star"></i> マイページ <i class="fa-regular fa-star"></i></font>
+    <font size="6"><i class="fa-regular fa-star"></i> 会員詳細 <i class="fa-regular fa-star"></i></font>
   </div>
 
   <div class="row">
@@ -13,10 +13,33 @@
             <td>ユーザー名</td>
             <td><%= @user.user_name %></td>
           </tr>
-
+          <tr>
+            <td>名前</td>
+            <td><%= @user.real_name %></td>
+          </tr>
+          <tr>
+            <td>メールアドレス</td>
+            <td><%= @user.email %></td>
+          </tr>
+          <tr>
+            <td>郵便番号</td>
+            <td><%= @user.postal_code %></td>
+          </tr>
+          <tr>
+            <td>住所</td>
+            <td><%= @user.address %></td>
+          </tr>
+          <tr>
+            <td>電話番号</td>
+            <td><%= @user.telephone_number %></td>
+          </tr>
           <tr>
             <td>自己紹介</td>
             <td><%= @user.introduction %></td>
+          </tr>
+          <tr>
+            <td>会員ステータス</td>
+            <td><%= @user.is_active %></td>
           </tr>
 
         </tbody>

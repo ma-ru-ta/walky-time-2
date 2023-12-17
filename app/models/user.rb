@@ -14,5 +14,17 @@ class User < ApplicationRecord
   validates :postal_code, presence: true
   validates :telephone_number, presence: true
 
+  def self.guest
+    find_or_create_by!(email: 'guest@example.com') do |user|
+      user.password = SecureRandom.urlsafe_base64
+      user.user_name = "ゲスト君"
+      user.real_name = "げすとたろう"
+      user.postal_code = "1111111"
+      user.address = "hawaii"
+      user.telephone_number = "11111111111"
+      user.is_active = false
+    end
+  end
+
 
 end
