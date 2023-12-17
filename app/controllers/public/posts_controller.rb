@@ -1,5 +1,5 @@
 class Public::PostsController < ApplicationController
-  
+
   def new
     @post = Post.new
   end
@@ -27,6 +27,8 @@ class Public::PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @post_comment = Comment.new
+  # コメントのIDではなく、Postに関連するコメントを取得する
+    @comments = @post.comments
   end
 
   def edit
@@ -45,6 +47,19 @@ class Public::PostsController < ApplicationController
   def destroy
     Post.find(params[:id]).destroy
     redirect_to posts_path
+  end
+
+  # showアクションと同じでどの投稿を依頼済みにするか
+  def switch_on
+    @post = Post.find(params[:id])
+    @post.update(active_status: false)
+    redirect_back(fallback_location: root_path)
+  end
+
+  def switch_off
+    @post = Post.find(params[:id])
+    @post.update(active_status: true)
+    redirect_back(fallback_location: root_path)
   end
 
   private

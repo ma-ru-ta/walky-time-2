@@ -3,9 +3,14 @@
 
   <div class = "row">
     <div class = "col-4">
-      <% if @post.post_image.attached? %>
-        <%= image_tag @post.get_post_image(600, 600), class: "img-fluid post-card-img" %>
-      <% end %>
+      <div class="relative">
+        <% if @post.post_image.attached? %>
+          <%= image_tag @post.get_post_image(600, 600), class: "img-fluid post-card-img" %>
+        <% end %>
+        <% if @post.active_status == false %>
+          <%= image_tag "business_icon_ca_124.png",size: "200x200", class: "absolute" %>
+        <% end %>
+      </div>
     </div>
 
     <div class = "col-md-8 mb-2" >
@@ -88,11 +93,21 @@
           <% end %>
         </p>
           <% end %>
-
-        <% if @post.user == current_user %>
-          <div><%= link_to " 編 集 ", edit_post_path(@post), class:"btn btn-sm btn-success" %></div>
-          <div><%= link_to " 削 除 ", post_path, method: :delete, class:"btn btn-sm btn-danger" %></div>
+　　　　<div class="row">
+　　　　<% if @post.user == current_user %>
+　　　　  <div class="col-4">
+            <%= link_to " 編 集 ", edit_post_path(@post), class:"btn btn-sm btn-success" %>
+            <%= link_to " 削 除 ", post_path, method: :delete, class:"btn btn-sm btn-danger" %>
+　　　　  </div>
+　　　　  <div class="col-4">
+　　　　  <% if @post.active_status == true %>
+            <%= link_to " 依頼済にする ", switch_on_path(@post.id), method: :post, class:"btn btn-sm btn-danger" %>
+          <% else%>
+            <%= link_to " 募集中に戻す ", switch_off_path(@post.id), method: :post, class:"btn btn-sm btn-success" %>
+          <% end %>
+　　　　  </div>
         <% end %>
+        </div>
       </div>
 
     </div>
@@ -107,12 +122,15 @@
             <% end %>
           </div>
       </div>
+
       <% @post.comments.each do |comment| %>
         <%= comment.user.user_name %>
         <%= comment.created_at.strftime('%Y/%m/%d') %><%= comment.body %>
-                                                       <!--commentテーブルにあるカラム-->
+                                                     <!--commentテーブルにあるカラム-->
+        <% if comment.user == current_user %>
+          <%= link_to "削除", post_comment_path(@post, comment), method: :delete, method: :delete %>
+        <% end %>
       <% end %>
-
 
 </div>
 

@@ -31,10 +31,15 @@
                 <% end %>
               </td>
               <td>
-                <%= comment.body.truncate(24, omission: '...') %>
+                <%= comment.body.truncate(25, omission: '...') %>
+                 <!--一覧画面のコメントの文字数を25文字まで表示-->
               </td>
               <td>
                 <%= comment.post.user.user_name%>
+              </td>
+              <td>
+                <%= link_to "削除", admin_post_comment_path(comment.post_id, comment.id), method: :delete, class: "btn btn-sm btn-danger rounded-pill" %>
+                                                          <!--コメント内の投稿idと(,)コメントidを取得する-->
               </td>
             </tr>
           <% end %>

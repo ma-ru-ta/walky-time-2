@@ -77,6 +77,7 @@ ActiveRecord::Schema.define(version: 2023_12_13_045056) do
     t.string "city", null: false
     t.string "post_body", null: false
     t.integer "hold_user_id"
+    t.boolean "active_status", default: true, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

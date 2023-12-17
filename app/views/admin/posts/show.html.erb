@@ -5,7 +5,7 @@
     <div class = "col-4">
       <%= image_tag @post.get_post_image(600, 600), class: "img-fluid post-card-img" %>
     </div>
-    
+
     <div class = "col-md-8 mb-2" >
       <div class = "row">
         <div class = col-md-3 , style="color: #48120E">
@@ -61,10 +61,25 @@
         </div>
       </div>
 　　</div>
-      
+
       <div>
         <%= link_to " 削 除 ", admin_post_path, method: :delete, class:"btn btn-sm btn-danger rounded-pill" %>
+
       </div>
-      
+
+   </div>
+
+  <div class = "row">
+    <% @post.comments.each do |comment| %>
+        <%= comment.user.user_name %>
+        <%= comment.created_at.strftime('%Y/%m/%d') %><%= comment.body %>
+                                                       <!--commentテーブルにあるカラム-->
+
+
+    <%= link_to "削除", admin_post_comment_path(comment.post_id, comment.id), method: :delete, class: "btn btn-sm btn-danger rounded-pill" %>
+                                                          <!--コメント内の投稿idと(,)コメントidを取得する-->
+    <% end %>
   </div>
+
+
 </div>

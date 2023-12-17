@@ -10,6 +10,7 @@ class CreatePosts < ActiveRecord::Migration[6.1]
       t.string :city, null: false
       t.string :post_body, null: false
       t.integer :hold_user_id
+      t.boolean :active_status, null: false, default: true
 
       t.timestamps
     end

@@ -4,12 +4,12 @@ Rails.application.routes.draw do
     registrations: "public/registrations",
     sessions: 'public/sessions'
   }
-  
+
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     sessions: "admin/sessions"
   }
-  
-  
+
+
 
   scope module: :public do
     root to: "homes#top"
@@ -19,9 +19,11 @@ Rails.application.routes.draw do
       resources :comments, only: [:create, :destroy]
       resource :favorite, only: [:create, :destroy] #１つの投稿に対してだから
     end
-    
+    post "posts/:id/switch_on" => "posts#switch_on", as: 'switch_on'       #募集「済」
+    post "posts/:id/switch_off" => "posts#switch_off", as: 'switch_off'    #募集中に戻す　
+          
     resources :users, only: [:show, :edit, :update] do
-      collection do 
+      collection do
         patch :withdraw
         get :check
       end
@@ -30,13 +32,13 @@ Rails.application.routes.draw do
       #     →既に自分の:idでユーザー編集（edit）に遷移するから余計な:idは付けない方が良い！
       #        働いたとき他のチーム開発したエンジニアに裏を読まれ混乱させてしまう可能性有り
     end
-    
+
     # ゲストユーザーログイン
     devise_scope :user do
       post 'users/guest_sign_in', to: 'sessions#guest_sign_in'
     end
   end
-  
+
 
 
   namespace :admin do
