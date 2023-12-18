@@ -7,6 +7,8 @@ class User < ApplicationRecord
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  has_many :favorited_posts, through: :favorites, source: :post
+    # Userがお気に入りした（_）投稿の一覧がみれる
 
   validates :user_name, length: { minimum: 2 , maximum: 20 }
   validates :real_name, presence: true

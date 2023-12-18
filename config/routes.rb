@@ -17,11 +17,11 @@ Rails.application.routes.draw do
     get "favorites" => "favorites#index"
     resources :posts do
       resources :comments, only: [:create, :destroy]
-      resource :favorite, only: [:create, :destroy] #１つの投稿に対してだから
+      resource :favorite, only: [:create, :destroy, :index] #１つの投稿に対してだから
     end
     post "posts/:id/switch_on" => "posts#switch_on", as: 'switch_on'       #募集「済」
-    post "posts/:id/switch_off" => "posts#switch_off", as: 'switch_off'    #募集中に戻す　
-          
+    post "posts/:id/switch_off" => "posts#switch_off", as: 'switch_off'    #募集中に戻す
+
     resources :users, only: [:show, :edit, :update] do
       collection do
         patch :withdraw

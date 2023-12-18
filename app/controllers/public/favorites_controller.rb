@@ -5,6 +5,7 @@ class Public::FavoritesController < ApplicationController
     favorite = current_user.favorites.new(post_id: post.id)
     favorite.save
     redirect_to post_path(post)
+    # redirect_to request.referer
   end
 
   def destroy
@@ -14,4 +15,8 @@ class Public::FavoritesController < ApplicationController
     redirect_to post_path(post)
   end
 
+  def index
+    @favorited_posts = current_user.favorited_posts
+    # Userモデルでお気に入り一覧が見れるように絞り込んだので、↑でちょっとコントロールしてやった。
+  end
 end
