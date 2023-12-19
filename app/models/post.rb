@@ -29,4 +29,9 @@ class Post < ApplicationRecord
     post_image.variant(resize_to_limit: [width, height]).processed
   end
 
+  def self.search_for(content)
+    where("dog_name LIKE ?", "%#{content}%")
+  end
+  # ↑部分一致の検索結果が表示されるようになる。
+
 end

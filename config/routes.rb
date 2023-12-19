@@ -9,12 +9,14 @@ Rails.application.routes.draw do
     sessions: "admin/sessions"
   }
 
-
-
+# 　会員側
   scope module: :public do
     root to: "homes#top"
     get 'home/about' => "homes#about", as: 'about'
     get "favorites" => "favorites#index"
+
+    get "/search", to: "searches#search"
+
     resources :posts do
       resources :comments, only: [:create, :destroy]
       resource :favorite, only: [:create, :destroy, :index] #１つの投稿に対してだから
@@ -40,9 +42,10 @@ Rails.application.routes.draw do
   end
 
 
-
+  # 管理者側
   namespace :admin do
 
+    get "/search", to: "searches#search"
     resources :users, only: [:index, :show, :edit, :update]
     resources :genres, only: [:index, :edit, :update]
     resources :posts, only: [:index, :show, :edit, :update, :destroy] do

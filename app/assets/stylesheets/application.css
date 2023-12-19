@@ -1,6 +1,7 @@
 .relative {
   position: relative;
 }
+
 .absolute {
   position: absolute;
   right: 30px;

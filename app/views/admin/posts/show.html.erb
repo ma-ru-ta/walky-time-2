@@ -9,6 +9,18 @@
     <div class = "col-md-8 mb-2" >
       <div class = "row">
         <div class = col-md-3 , style="color: #48120E">
+          ユーザー名
+        </div>
+        <div class = "col-md-8">
+          <%= link_to admin_user_path(id: @post.user_id) do %>
+           <%= @post.user.user_name %>
+          <% end %>
+        </div>
+      </div>
+
+    <div class = "col-md-8 mb-2" >
+      <div class = "row">
+        <div class = col-md-3 , style="color: #48120E">
           愛犬の名前
         </div>
         <div class = "col-md-8">

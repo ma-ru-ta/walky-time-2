@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <h4 class="text-center", style="color: #48120E">
+          ユーザー一覧
+       </h4>
+
+      <div class="pt-5">
+        <table class="table", style="color: #4d382e;">
+          <thead>
+            <tr>
+              <th>会員ID</th>
+              <th>ユーザー名</th>
+              <th>メールアドレス</th>
+              <th>会員ステータス</th>
+            </tr>
+          </thead>
+          <% @records.each do |record| %>
+          <tr>
+            <td>
+              <%= record.id %>
+            </td>
+            <td>
+              <%= link_to admin_user_path(record.id) do %>
+                <%= record.user_name %>
+              <% end %>
+            </td>
+            <td><%= record.email %></td>
+            <td><%= record.is_active %></td>
+          </tr>
+        <% end %>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

@@ -28,5 +28,9 @@ class User < ApplicationRecord
     end
   end
 
+  def self.search_for(content)
+    where("user_name LIKE ?", "%#{content}%")
+  end
+  # ↑部分一致の検索結果が表示されるようになる。
 
 end
