@@ -1,12 +1,12 @@
 class Admin::PostsController < ApplicationController
 
   def index
-    @posts = Post.page(params[:page])
+    @posts = Post.page(params[:page]).per(20)
     @prefectures = Prefecture.all
     if params[:prefecture]
-      @posts = Post.where(prefecture_id: params[:prefecture]).page(params[:page])
+      @posts = Post.where(prefecture_id: params[:prefecture]).page(params[:page]).per(20)
     else
-      @posts = Post.page(params[:page])
+      @posts = Post.page(params[:page]).per(20)
     end
   end
 

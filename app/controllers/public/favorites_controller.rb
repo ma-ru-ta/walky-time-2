@@ -16,7 +16,7 @@ class Public::FavoritesController < ApplicationController
   end
 
   def index
-    @favorited_posts = current_user.favorited_posts
+    @favorited_posts = current_user.favorited_posts.page(params[:page]).per(12)
     # Userモデルでお気に入り一覧が見れるように絞り込んだので、↑でちょっとコントロールしてやった。
   end
 end

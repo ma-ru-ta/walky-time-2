@@ -1,6 +1,9 @@
 <div class="container">
-  <h3><i class="fa-solid fa-pen" style="color: #494a50;"></i> New Post <i class="fa-solid fa-pen" style="color: #494a50;"></i></h3>
-        <%= form_with model: @post, url: posts_path, method: :post do |f| %>
+  <h3>
+    <i class="fa-solid fa-pen" style="color: #494a50;"></i>
+      New Post
+    <i class="fa-solid fa-pen" style="color: #494a50;"></i></h3>
+      <%= form_with model: @post, url: posts_path, method: :post do |f| %>
     <div class="row">
       <div class="col-md-4">
         <div class="form-group">
@@ -26,8 +29,6 @@
         </div>
       </div>
 
-
-
     <div class="row">
       <div class="col-md-4">
         <%= f.label :prefecture_id, "都道府県" %>
@@ -46,7 +47,7 @@
     </div>
 
     <div class="form-group">
-      <%= f.label :post_image, "愛犬写真" %>
+      <%= f.label :post_image, "画像" %>
       <div>
         <%= f.file_field :post_image %>
       </div>

@@ -1,9 +1,13 @@
 <div class="row">
   <% posts.each do |post| %>
     <div class="col-md-4 mb-3">
+      <%= link_to post_path(post) do %>
+      <!--画像をリンクにした↑-->
       <div class="relative">
         <% if post.post_image.attached? %>
           <%= image_tag post.get_post_image(300, 300), class: "img-fluid post-card-img" %>
+        <% else %>
+          <%= image_tag "ノーイメイジ.png", size: "300x300" %>
         <% end %>
         <% if post.active_status == false %>
           <%= image_tag "決定スタンプ４.png",size: "200x200", class: "absolute" %>
@@ -15,8 +19,10 @@
             <%= link_to post.dog_name, post_path(post) %>
           </h5>
           <p class="m-0">
+
             <%= link_to post.day.strftime("%Y年%m月%d日"), post_path(post) %>
           </p>
+
           <p class="m-0">
             <%= link_to post.prefecture.name, post_path(post) %>
           </p>
@@ -33,6 +39,7 @@
           <% end %>
         </div>
       </div>
+      <% end %>
     </div>
   <% end %>
 </div>

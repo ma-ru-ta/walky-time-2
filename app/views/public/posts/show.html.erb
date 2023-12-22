@@ -11,11 +11,43 @@
           <%= image_tag "business_icon_ca_124.png",size: "200x200", class: "absolute" %>
         <% end %>
       </div>
+
+      <div>
+        <% if @post.favorited_by?(current_user) %>
+          <p>
+            <%= link_to post_favorite_path(@post), method: :delete do %>
+              ★<%= @post.favorites.count %> お気に入り
+            <% end %>
+          </p>
+        <% else %>
+          <p>
+            <%= link_to post_favorite_path(@post), method: :post do %>
+              ☆<%= @post.favorites.count %> お気に入り
+            <% end %>
+          </p>
+        <% end %>
+      <div class="row">
+        <% if @post.user == current_user %>
+      <div class="col-4">
+        <%= link_to " 編 集 ", edit_post_path(@post), class:"btn font-bold rounded-pill", style: "background-color: #ffe9a9; color: #1A120B;" %>
+        <%= link_to " 削 除 ", post_path, method: :delete, class:"btn btn-light rounded-pill", style: "background-color: #f5b1aa; color: #664e3d;" %>
+      </div>
+      <div class="col-4">
+        <% if @post.active_status == true %>
+          <%= link_to " 依頼済にする ", switch_on_path(@post.id), method: :post, class:"btn btn-sm btn-danger" %>
+        <% else%>
+          <%= link_to " 募集中に戻す ", switch_off_path(@post.id), method: :post, class:"btn btn-sm btn-success" %>
+        <% end %>
+      </div>
+        <% end %>
+        </div>
+      </div>
     </div>
 
     <div class = "col-md-8 mb-2" >
-      <div class = "row">
-        <div class = col-md-3 , style="color: #48120E">
+
+      <div class = "row mb-2">
+        <div class = col-md-3>
           ユーザー名
         </div>
         <div class = "col-md-9">
@@ -79,43 +111,12 @@
         </div>
       </div>
 
-      <div>
-        <% if @post.favorited_by?(current_user) %>
-        <p>
-          <%= link_to post_favorite_path(@post), method: :delete do %>
-            ♥<%= @post.favorites.count %> お気に入り
-          <% end %>
-        </p>
-        <% else %>
-        <p>
-          <%= link_to post_favorite_path(@post), method: :post do %>
-            ♡<%= @post.favorites.count %> お気に入り
-          <% end %>
-        </p>
-          <% end %>
-        <div class="row">
-        <% if @post.user == current_user %>
-          <div class="col-4">
-            <%= link_to " 編 集 ", edit_post_path(@post), class:"btn btn-sm btn-success" %>
-            <%= link_to " 削 除 ", post_path, method: :delete, class:"btn btn-sm btn-danger" %>
-          </div>
-          <div class="col-4">
-          <% if @post.active_status == true %>
-            <%= link_to " 依頼済にする ", switch_on_path(@post.id), method: :post, class:"btn btn-sm btn-danger" %>
-          <% else%>
-            <%= link_to " 募集中に戻す ", switch_off_path(@post.id), method: :post, class:"btn btn-sm btn-success" %>
-          <% end %>
-        </div>
-        <% end %>
-        </div>
-      </div>
-
     </div>
   </div>
       <h3>コメント</h3>
 
       <div>
-        <%= form_with model: [@post, @post_comment] do |f| %> !
+        <%= form_with model: [@post, @post_comment] do |f| %>
           <div class="form-group">
             <%= f.text_area :body, placeholder: "コメントをここに★" ,  rows: 5, class: "form-control"%>
                 <%= f.submit "送信する" %>

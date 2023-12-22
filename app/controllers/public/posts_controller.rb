@@ -18,9 +18,9 @@ class Public::PostsController < ApplicationController
   def index
     @prefectures = Prefecture.all
     if params[:prefecture]
-      @posts = Post.where(prefecture_id: params[:prefecture]).page(params[:page])
+      @posts = Post.where(prefecture_id: params[:prefecture]).page(params[:page]).per(12)
     else
-      @posts = Post.page(params[:page])
+      @posts = Post.page(params[:page]).per(12)
     end
   end
 

@@ -49,4 +49,13 @@
   <div class = "row d-flex justify-content-center">
     <span class=""><%= link_to " 編 集 す る ", edit_admin_user_path, class:"btn font-bold rounded-pill", style: "background-color: #ffe9a9; color: #1A120B;" %></span>
   </div>
+
+  <div class="col-md-9">
+      <h3><i class="fa-solid fa-paw"></i>投稿一覧<i class="fa-solid fa-paw"></i></h3>
+
+       <%= render 'public/posts/index', posts: @posts %>
+
+  
+    </div>
+
 </div>

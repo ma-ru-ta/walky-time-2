@@ -1,9 +1,27 @@
 @use '~bootstrap/scss/bootstrap';
 @import url('https://fonts.googleapis.com/css2?family=Hachi+Maru+Pop&family=Raleway&display=swap');
 
+
 html,
 body {
   font-family: 'Raleway', 'Hachi Maru Pop', cursive;
+  font-weight: bold;
+  color: #8d6e62;
+}
+
+header {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.main_visual{
+  position: relative;
+}
+
+.main_visual_image{
+  width: 150%;
+  height: 600px;
+
 }
 
 .post-card-img {
@@ -19,3 +37,4 @@ body {
     object-fit: cover;
   }
 }
+
