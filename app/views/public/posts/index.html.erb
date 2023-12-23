@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-3 mb-3 mb-mb-0">
+    <div class="col-md-2 mb-3 mb-mb-0">
       <div class="card">
         <div class="card-header">
           <i class="fa-solid fa-map-pin"></i> 都道府県 <i class="fa-solid fa-map-pin"></i>
@@ -8,19 +8,17 @@
         <div class="card-body">
           <ul class="list-unstyled">
             <li><%= link_to "すべてを表示", posts_path %></li>
-            <% @prefectures.each do |prefecture| %>  
-              <li><%= link_to prefecture.name, posts_path(prefecture: prefecture.id) %></li>
-            <% end %>
-            <!--都道府県一覧はdb/seedに記述-->
+              <% @prefectures.each do |prefecture| %>
+                <li><%= link_to prefecture.name, posts_path(prefecture: prefecture.id) %></li>
+              <% end %>
+              <!--都道府県一覧はdb/seedに記述-->
           </ul>
         </div>
       </div>
     </div>
-    <div class="col-md-9">
+    <div class="col-md-10 mb-1">
       <h3><i class="fa-solid fa-paw"></i>お散歩一覧<i class="fa-solid fa-paw"></i></h3>
-
-       <%= render 'index', posts: @posts %>
-
+        <%= render 'index', posts: @posts %>
       <%= paginate @posts %>
     </div>
   </div>

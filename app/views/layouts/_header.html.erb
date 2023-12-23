@@ -5,18 +5,18 @@
       <div class="d-flex content-between align-items-center md-4 ">
         <div class="btn-group">
           <%= link_to root_path, class: "btn font-bold", class: "header-logo" do %>
-            <%= image_tag 'LOGOOO.png', size: '120x60' %>
+            <%= image_tag '☆Walky Time ☆.png', size: '130x60' %>
           <% end %>
         </div>
 
         <div class="btn-group ml-auto">
           <ul class="nav justify-content-center">
             <% if user_signed_in? %>
-              <li class="nav-item"><%= link_to "マイページ", user_path(current_user), class:"btn font-bold rounded-pill", style: "background-color: #b7d7b9; color: #ffffff;" %></li>
-              <li class="nav-item"><%= link_to "新規投稿", new_post_path, class:"btn font-bold rounded-pill", style: "background-color: #ffaa00; color: #ffffff;" %></li>
-              <li class="nav-item"><%= link_to "投稿一覧", posts_path, class:"btn font-bold rounded-pill", style: "background-color: #b7d7b9; color: #ffffff;" %></li>
-              <li class="nav-item"><%= link_to "お気に入り", favorites_path, class:"btn font-bold rounded-pill", style: "background-color: #ffaa00; color: #ffffff;" %></li>
-              <li class="nav-item"><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class:"btn font-bold rounded-pill", style: "background-color: #b7d7b9; color: #ffffff;" %></li>
+              <li class="nav-item mx-1"><%= link_to "マイページ", user_path(current_user), class:"btn font-bold rounded-pill", style: "background-color: #b7d7b9; color: #ffffff;" %></li>
+              <li class="nav-item mx-1"><%= link_to "新規投稿", new_post_path, class:"btn font-bold rounded-pill", style: "background-color: #ffaa00; color: #ffffff;" %></li>
+              <li class="nav-item mx-1"><%= link_to "投稿一覧", posts_path, class:"btn font-bold rounded-pill", style: "background-color: #b7d7b9; color: #ffffff;" %></li>
+              <li class="nav-item mx-1"><%= link_to "お気に入り", favorites_path, class:"btn font-bold rounded-pill", style: "background-color: #ffaa00; color: #ffffff;" %></li>
+              <li class="nav-item mx-1"><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class:"btn font-bold rounded-pill", style: "background-color: #b7d7b9; color: #ffffff;" %></li>
 
               <%= form_with url: search_path, method: :get, local: true do |f| %>
                 <%= f.text_field :content %>
@@ -24,10 +24,10 @@
               <% end %>
 
             <% elsif admin_signed_in? %>
-              <li class="nav-item"><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "btn font-bold ", style: " color: #f7eac5;" %></li>
-              <li class="nav-item"><%= link_to "ユーザー一覧", admin_users_path, class: "btn font-bold ", style: " color: #f7eac5;"%></li>
-              <li class="nav-item"><%= link_to "投稿一覧", admin_posts_path, class: "btn font-bold ", style: " color: #f7eac5E;"%></li>
-              <li class="nav-item"><%= link_to "コメント一覧", admin_comments_path, class: "btn font-bold ", style: " color: #f7eac5;"%></li>
+              <li class="nav-item mx-1"><%= link_to "投稿一覧", admin_posts_path, class:"btn font-bold rounded-pill", style: "background-color: #b7d7b9; color: #ffffff;" %></li>
+              <li class="nav-item mx-1"><%= link_to "ユーザー一覧", admin_users_path, class:"btn font-bold rounded-pill", style: "background-color: #ffaa00; color: #ffffff;" %></li>
+              <li class="nav-item mx-1"><%= link_to "コメント一覧", admin_comments_path, class:"btn font-bold rounded-pill", style: "background-color: #b7d7b9; color: #ffffff;" %></li>
+              <li class="nav-item mx-1"><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class:"btn font-bold rounded-pill", style: "background-color: #ffaa00; color: #ffffff;" %></li>
 
               <%= form_with url: admin_search_path, method: :get, local: true do |f| %>
                 <%= f.text_field :content %>
@@ -35,11 +35,10 @@
               <% end %>
 
             <% else %>
-              <li class="nav-item"><%= link_to 'ゲストログイン', users_guest_sign_in_path, method: :post, class: "btn font-bold ", style: " color: #f7eac5;" %></li>
-              <li class="nav-item"><%= link_to "新規登録", new_user_registration_path, class: "btn font-bold ", style: " color: #f7eac5;" %></li>
-              <li class="nav-item"><%= link_to "ログイン", new_user_session_path, class: "btn font-bold ", style: " color: #f7eac5;" %></li>
-              <li class="nav-item"><%= link_to "投稿一覧", posts_path, class: "btn font-bold ", style: " color: #f7eac5;" %></li>
-              <li class="nav-item"><%= link_to "About", about_path, class: "btn font-bold ", style: " color: #f7eac5;" %></li>
+              <li class="nav-item mx-1"><%= link_to "新規登録", new_user_registration_path, class:"btn font-bold rounded-pill", style: "background-color: #ffaa00; color: #ffffff;" %></li>
+              <li class="nav-item mx-1"><%= link_to "ログイン", new_user_session_path, class:"btn font-bold rounded-pill", style: "background-color: #b7d7b9; color: #ffffff;" %></li>
+              <li class="nav-item mx-1"><%= link_to "投稿一覧", posts_path, class:"btn font-bold rounded-pill", style: "background-color: #ffaa00; color: #ffffff;" %></li>
+              <li class="nav-item mx-1"><%= link_to "About", about_path, class:"btn font-bold rounded-pill", style: "background-color: #b7d7b9; color: #ffffff;" %></li>
 
               <%= form_with url: search_path, method: :get, local: true do |f| %>
                 <%= f.text_field :content %>

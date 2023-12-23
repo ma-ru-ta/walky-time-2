@@ -9,9 +9,9 @@ body {
   color: #8d6e62;
 }
 
-header {
-  margin-left: 20px;
-  margin-right: 20px;
+.top{
+  text-decoration: none;
+  color: #48120E ;
 }
 
 .main_visual{
@@ -20,13 +20,27 @@ header {
 
 .main_visual_image{
   width: 150%;
-  height: 600px;
+  height: 700px;
+}
 
+.text{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  background-color: rgba(255,255,255,0.4);
+  width: 50%;
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-shadow: 2px 2px 0px white;
 }
 
 .post-card-img {
   width: 100%;
   height: 250px;
+  border-radius: 50%;
   object-fit: cover;
 }
 
@@ -38,3 +52,18 @@ header {
   }
 }
 
+a {
+  color: #8d6e62; /* ここに適切な色コードを指定します */
+  /* 他のスタイルも追加できます */
+}
+
+/* リンクがホバー（マウスが重なったとき）したときのスタイル */
+a:hover {
+  color : #ffaa00; /* ホバー時にアンダーラインを表示 */
+  /* 他のホバー時のスタイルも追加できます */
+}
+
+.alert-message {
+  color: red;
+  font-weight: bold;
+}

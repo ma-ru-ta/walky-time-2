@@ -17,6 +17,26 @@
         <%= f.submit "ログイン", class: "btn btn-primary rounded-pill" %>
         </div>
       <% end %>
+
+    <div class="form-row">
+      <div class="col-6 form-group mt-5">
+        <h4>既に会員済みの方</h4>
+      </div>
+    </div>
+      <div>
+        <%= link_to " ここをクリック ", new_user_registration_path, class: "btn btn-primary rounded-pill" %>
+      </div>
+
+    <div class="form-row">
+      <div class="col-6 form-group mt-5">
+        <h4>ゲストログイン</h4>
+      </div>
+    </div>
+      <div>
+        <%= link_to " ここをクリック ", users_guest_sign_in_path, method: :post, class: "btn btn-primary rounded-pill" %>
+      </div>
+
+
     </div>
   </div>
 </div>
