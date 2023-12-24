@@ -23,18 +23,24 @@ body {
   height: 700px;
 }
 
+
+
 .text{
+  // position: absolute;
+  // top: 70%;
+  // left: 115%;
+  // transform: translate(-50%,-50%);
+  // background-color: rgba(255,255,255,0.4);
+  // width: 80%;
+  // height: 250px;
+  // display: flex;
+  // align-items: center;
+  // justify-content: center;
+  // text-shadow: 2px 2px 0px white;
+  // line-height: 1.5;
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%,-50%);
-  background-color: rgba(255,255,255,0.4);
-  width: 50%;
-  height: 150px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-shadow: 2px 2px 0px white;
+  bottom: 25px;
+  right: 25px;
 }
 
 .post-card-img {

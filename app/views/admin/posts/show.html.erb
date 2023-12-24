@@ -7,30 +7,33 @@
     </div>
 
     <div class = "col-md-8 mb-2" >
-      <div class = "row">
-        <div class = col-md-3 , style="color: #48120E">
+
+      <div class = "row mb-2">
+        <div class = col-md-3>
+          <i class="fa-solid fa-user"></i>
           ユーザー名
         </div>
-        <div class = "col-md-8">
+        <div class = "col-md-9">
           <%= link_to admin_user_path(id: @post.user_id) do %>
            <%= @post.user.user_name %>
           <% end %>
         </div>
       </div>
 
-    <div class = "col-md-8 mb-2" >
-      <div class = "row">
-        <div class = col-md-3 , style="color: #48120E">
+      <div class = "row mb-2">
+        <div class = col-md-3>
+          <i class="fa-solid fa-dog"></i>
           愛犬の名前
         </div>
-        <div class = "col-md-8">
+        <div class = "col-md-9">
           <h5><%= @post.dog_name %></h5>
         </div>
       </div>
 
       <div class = "row mb-2">
         <div class = col-md-3>
-          犬種
+          <i class="fa-solid fa-dog"></i>
+           犬 種
         </div>
         <div class = "col-md-9">
           <h5><%= @post.dog_type %></h5>
@@ -39,6 +42,23 @@
 
       <div class = "row mb-2">
         <div class = col-md-3>
+          <i class="fa-solid fa-dog"></i>
+           性別
+        </div>
+        <div class = "col-md-9">
+          <h5>
+            <% if @post.dog_sex == true %>
+            ♂
+            <% else %>
+            ♀
+            <% end %>
+          </h5>
+        </div>
+      </div>
+
+      <div class = "row mb-2">
+        <div class = col-md-3>
+          <i class="fa-regular fa-calendar-days"></i>
           お散歩希望日
         </div>
         <div class = "col-md-9">
@@ -48,6 +68,7 @@
 
       <div class = "row mb-2">
         <div class = "col-md-3">
+          <i class="fa-solid fa-map-pin"></i>
           都道府県
         </div>
         <div class = "col-md-9">
@@ -57,8 +78,9 @@
 
       <div class = "row mb-2">
         <div class = col-md-3>
+          <i class="fa-solid fa-map-pin"></i>
           市町村
-        </div>
+          </div>
         <div class = "col-md-9">
           <h5><%= @post.city %></h5>
         </div>
@@ -66,6 +88,7 @@
 
       <div class = "row">
         <div class = col-md-3>
+          <i class="fa-solid fa-dog"></i>
           紹介文・条件
         </div>
         <div class = "col-md-9">
@@ -75,8 +98,7 @@
 　　</div>
 
       <div>
-        <%= link_to " 削 除 ", admin_post_path, method: :delete, class:"btn btn-sm btn-danger rounded-pill" %>
-
+        <%= link_to " 投 稿 削 除 ", admin_post_path, method: :delete, class:"btn btn-sm btn-danger rounded-pill" %>
       </div>
 
    </div>

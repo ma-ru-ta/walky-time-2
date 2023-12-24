@@ -6,11 +6,12 @@ class Public::PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
+    @prefectures = Prefecture.all
     @post.user_id = current_user.id
     if @post.save
       redirect_to posts_path
     else
-      @posts = Post.all
+      @posts = Post.page(params[:page]).per(12)  # ページネーション用に @posts を設定
       render :index
     end
   end
@@ -23,6 +24,7 @@ class Public::PostsController < ApplicationController
       @posts = Post.page(params[:page]).per(12)
     end
   end
+
 
   def show
     @post = Post.find(params[:id])
