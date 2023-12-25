@@ -6,7 +6,7 @@ class Admin::PostsController < ApplicationController
     if params[:prefecture]
       @posts = Post.where(prefecture_id: params[:prefecture]).page(params[:page]).per(20)
     else
-      @posts = Post.page(params[:page]).per(20)
+      @posts = Post.page(params[:page]).per(10)
     end
   end
 

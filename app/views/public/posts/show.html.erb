@@ -8,7 +8,7 @@
           <%= image_tag @post.get_post_image(500, 500), class: "img-fluid post-card-img" %>
         <% end %>
         <% if @post.active_status == false %>
-          <%= image_tag "決定スタンプ４.png",size: "200x200", class: "absolute" %>
+          <%= image_tag "決定スタンプ４.png",size: "200x200", class: "absolute img-fluid" %>
         <% end %>
       </div>
 

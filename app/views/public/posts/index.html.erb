@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-2 mb-3 mb-mb-0">
+    <div class="col-md-2 mb-3 mb-mb-2">
       <div class="card">
         <div class="card-header">
           <i class="fa-solid fa-map-pin"></i> 都道府県 <i class="fa-solid fa-map-pin"></i>
@@ -16,10 +16,15 @@
         </div>
       </div>
     </div>
-    <div class="col-md-10 mb-1">
-      <h3><i class="fa-solid fa-paw"></i>お散歩一覧<i class="fa-solid fa-paw"></i></h3>
-        <%= render 'index', posts: @posts %>
-      <%= paginate @posts %>
+      <div class="col-md-10 mb-1">
+        <h3 class="text-center">
+        <i class="fa-solid fa-paw"></i>お散歩一覧<i class="fa-solid fa-paw"></i>
+        </h3>
+          <%= render 'index', posts: @posts %>
+        <div>
+          <%= paginate @posts %>
+        </div>
+      </div>
     </div>
   </div>
 </div>

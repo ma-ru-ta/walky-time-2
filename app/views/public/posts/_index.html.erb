@@ -1,47 +1,85 @@
 <div class="row">
   <% posts.each do |post| %>
     <div class="col-md-4 mb-4">
-      <%= link_to post_path(post) do %>
+      <div class="card">
+        <div class="card-body">
+
+      <%#= link_to post_path(post) do %>
       <!--画像をリンクにした↑-->
         <div class="relative">
-          <% if post.post_image.attached? %>
-            <%= image_tag post.get_post_image(300, 300), class: "img-fluid post-card-img" %>
-          <% else %>
-            <%= image_tag "ノーイメイジ.png", size: "300x300" %>
-          <% end %>
-          <% if post.active_status == false %>
-            <%= image_tag "決定スタンプ４.png",size: "200x200", class: "absolute" %>
+          <%= link_to post_path(post) do %>
+            <% if post.post_image.attached? %>
+              <%= image_tag post.get_post_image(300, 300), class: "img-fluid post-card-img" %>
+            <% else %>
+              <%= image_tag "ノーイメイジ.png", size: "300x300", class: "img-fluid post-card-img" %>
+            <% end %>
+            <% if post.active_status == false %>
+              <%= image_tag "決定スタンプ４.png",size: "200x200", class: "absolute img-fluid" %>
+            <% end %>
           <% end %>
         </div>
-        <div class="row mt-2">
-          <div class="col-8">
+        <!--<div class="row mt-4">-->
+        <!--  <div class="col-8">-->
+
+        <div class="my-2 text-right">
+          <% if post.favorited_by?(current_user) %>
+            <div>
+              <%= link_to post_favorite_path(post), method: :delete do %>
+                ★<%= post.favorites.count %>
+              <% end %>
+            </div>
+          <% else %>
+            <div>
+              <%= link_to post_favorite_path(post), method: :post do %>
+                ☆<%= post.favorites.count %>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+
             <h5 class="card-title">
-              <i class="fa-solid fa-dog"></i>
-              <%= post.dog_name %>
+              <i class="fa-solid fa-dog fa-fw mr-2"></i>
+              <%= link_to post.dog_name, post_path(post) %>
             </h5>
-            <p class="m-0">
-              <i class="fa-regular fa-calendar-days"></i>
-              <%= post.day.strftime("%Y年%m月%d日") %>
+            <p class="">
+              <i class="fa-regular fa-calendar-days fa-fw mr-2"></i>
+              <%= link_to post.day.strftime("%Y年%m月%d日"), post_path(post) %>
             </p>
 
-            <p class="m-0">
-              <i class="fa-solid fa-map-pin"></i>
-              <%= post.prefecture.name %>
+            <p class="">
+              <i class="fa-solid fa-map-pin fa-fw mr-2"></i>
+              <%= link_to post.prefecture.name, post_path(post) %>
             </p>
-          </div>
-          <div class="col-4">
-            <!--# ↓投稿したユーザー(==)がログインしている時（下記条件がそろった時）に表示される↓-->
+
+            <div class="mt-4">
             <% if post.user == current_user %>
             <!--true/依頼済み   false/募集中-->
               <% if post.active_status == true %>
                 <%= link_to " 依頼済にする", switch_on_path(post.id), method: :post, class:"btn btn-sm btn-danger" %>
               <% else%>
-                <%= link_to " 募集中", switch_off_path(post.id),method: :post, class:"btn btn-sm btn-success" %>
+                <%= link_to " 募集中に戻す", switch_off_path(post.id),method: :post, class:"btn btn-sm btn-success" %>
               <% end %>
             <% end %>
-          </div>
-        </div>
-      <% end %>
+            </div>
+
+          <!--</div>-->
+          <!--<div class="col-2">-->
+            <!--# ↓投稿したユーザー(==)がログインしている時（下記条件がそろった時）に表示される↓-->
+          <!--  <% if post.user == current_user %>-->
+            <!--true/依頼済み   false/募集中-->
+          <!--    <% if post.active_status == true %>-->
+          <!--      <%= link_to " 依頼済にする", switch_on_path(post.id), method: :post, class:"btn btn-sm btn-danger" %>-->
+          <!--    <% else%>-->
+          <!--      <%= link_to " 募集中に戻す", switch_off_path(post.id),method: :post, class:"btn btn-sm btn-success" %>-->
+          <!--    <% end %>-->
+          <!--  <% end %>-->
+          <!--</div>-->
+        <!--</div>-->
+      <%# end %>
     </div>
+
+    </div>
+      </div>
+
   <% end %>
 </div>

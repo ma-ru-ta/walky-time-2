@@ -9,8 +9,9 @@ body {
 
 .absolute {
   position: absolute;
-  right: 30px;
-  bottom: 30px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   opacity: 0.8;
 }
 
