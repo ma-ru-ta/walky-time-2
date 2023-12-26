@@ -37,10 +37,6 @@
             <td>自己紹介</td>
             <td><%= @user.introduction %></td>
           </tr>
-          <tr>
-            <td>会員ステータス</td>
-            <td><%= @user.is_active %></td>
-          </tr>
 
         </tbody>
       </table>
@@ -55,7 +51,7 @@
 
        <%= render 'public/posts/index', posts: @posts %>
 
-  
+
     </div>
 
 </div>

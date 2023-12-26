@@ -4,7 +4,7 @@
       <!--"background-color:#ffaa00 rgba(255, 255, 255, 0.8);"-->
       <div class="d-flex content-between align-items-center md-4 ">
         <div class="btn-group">
-          <%= link_to root_path, class: "btn font-bold", class: "header-logo" do %>
+          <%= link_to admin_signed_in? ? admin_posts_path : root_path, class: "btn font-bold", class: "header-logo" do %>
             <%= image_tag '☆Walky Time ☆.png', size: '130x60' %>
           <% end %>
         </div>

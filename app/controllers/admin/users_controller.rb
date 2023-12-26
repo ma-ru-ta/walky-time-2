@@ -28,8 +28,9 @@ before_action :authenticate_admin!
     end
   end
 
-  def withdrw
-
+  def destroy
+    @user = User.find(params[:id]).destroy
+    redirect_to admin_users_path
   end
 
 
@@ -42,8 +43,7 @@ before_action :authenticate_admin!
                                  :postal_code,
                                  :address,
                                  :telephone_number,
-                                 :introduction,
-                                 :is_active
+                                 :introduction
                                  )
   end
 
