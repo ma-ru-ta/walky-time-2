@@ -14,7 +14,7 @@
               <th>会員ID</th>
               <th>ユーザー名</th>
               <th>メールアドレス</th>
-              <th>会員ステータス</th>
+              <!--<th>会員ステータス</th> 物理削除のため、コメントアウト-->
             </tr>
           </thead>
           <% @users.each do |user| %>
@@ -30,13 +30,14 @@
               <td>
                 <%= user.email %>
               </td>
-              <td>
-                <% if user.is_active == true %>
-                  <p class = "text-success">有効</p>
-                <% else%>
-                  <p class = "text-secondary">退会中</p>
-                <% end %>
-              </td>
+              <!--<td>-->
+              <!--  <% if user.is_active == true %>-->
+              <!--    <p class = "text-success">有効</p>-->
+              <!--  <% else%>-->
+              <!--    <p class = "text-secondary">退会中</p>-->
+              <!--  <% end %>-->
+              <!--</td>-->
+              <!--物理削除のため、コメントアウト-->
             </tr>
           <% end %>
         </table>
