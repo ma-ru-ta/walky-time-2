@@ -15,12 +15,13 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :favorited_posts, through: :favorites, source: :post
-    # Userがお気に入りした（_）投稿の一覧がみれる
-  has_many :posts, :dependent => :destroy
-  # 退会ユーザーに紐づくお気に入りも削除する場合
-  has_many :favorites, :dependent => :destroy
-  # 退会ユーザーに紐づくコメントも削除する場合
-  has_many :comments, :dependent => :destroy
+
+  #   # Userがお気に入りした（_）投稿の一覧がみれる
+  # has_many :posts, :dependent => :destroy
+  # # 退会ユーザーに紐づくお気に入りも削除する場合
+  # has_many :favorites, :dependent => :destroy
+  # # 退会ユーザーに紐づくコメントも削除する場合
+  # has_many :comments, :dependent => :destroy
 
 
   validates :user_name, length: { minimum: 2 , maximum: 20 }

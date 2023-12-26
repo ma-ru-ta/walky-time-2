@@ -18,10 +18,10 @@
     </div>
       <div class="col-md-10 mb-1">
         <h3 class="text-center">
-        <i class="fa-solid fa-paw"></i>お散歩一覧<i class="fa-solid fa-paw"></i>
+        <i class="fa-solid fa-paw"></i>投稿一覧<i class="fa-solid fa-paw"></i>
         </h3>
           <%= render 'index', posts: @posts %>
-        <div>
+        <div class="col-10 mt-4">
           <%= paginate @posts %>
         </div>
       </div>

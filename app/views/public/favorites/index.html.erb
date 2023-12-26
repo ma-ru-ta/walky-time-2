@@ -1,16 +1,16 @@
-<div class="container"> 
-  <div class="row">
-    <div class="col text-center">
-      <h3>
+<div class="container">
+  <div class="row ">
+    <div class="col-10 mt-3">
+      
+      <h3 class="text-center">
         <i class="fa-regular fa-star" style="color: #8d6e62;"></i>
         お気に入り一覧
         <i class="fa-regular fa-star" style="color: #8d6e62;"></i>
       </h3>
-    </div>
-      
-      <div>
+    
         <%= render 'public/posts/index', posts: @favorited_posts %>
-    　</div>　　　　　　　　　<!--投稿一覧の部分テンプレートを受け取って、favorite-->
-　</div>
+    　                        <!--投稿一覧の部分テンプレートを受け取って、favorite-->
+    </div>
+  </div>
 </div>
 

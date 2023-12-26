@@ -1,11 +1,41 @@
-<h2>Results index</h2>
+<div class="container">
+  <div class="row">
 
-<table class="table table-hover table-inverse">
-  <% @records.each do |record| %>
-    <tr>
-      <td><%= record.dog_name %></td>
-      <td><%= record.day %></td>
-      <td><%= record.prefecture.name %></td>
-    </tr>
-  <% end %>
-</table>
+    <div class="col-10">
+      <h4 class="text-center">
+        <i class="fa-solid fa-magnifying-glass"></i>
+          検索一覧
+        <i class="fa-solid fa-magnifying-glass"></i>
+       </h4>
+
+      <div class = "mt-4 pt-3">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>ワンちゃんの名前</th>
+              <th>投稿日時</th>
+              <th>都道府県</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <% @records.each do |record| %>
+              <tr>
+                <td>
+                  <%= link_to record.dog_name, post_path(record) %>
+                </td>
+                <td>
+                  <%= record.day %>
+                </td>
+                <td>
+                  <%= record.prefecture.name %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </div>
+</div>
