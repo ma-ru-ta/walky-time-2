@@ -1,6 +1,7 @@
 class Admin::CommentsController < ApplicationController
 
   # before_action :set_comment, only: [:show, :destroy]
+  before_action :authenticate_admin!
 
   def index
     @comments = Comment.page(params[:page]).per(20)

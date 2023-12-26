@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="row">
+  <div class="row kakomi-box4">
     <div class="col-md-6 mx-auto">
       <h2>会員登録画面</h2>
 
@@ -40,18 +40,18 @@
         <div class="form-group">
           <div class="row">
             <div class="col-md-5 mx-auto">
-              <%= f.submit " 新 規 登 録 ", class: "btn btn-primary rounded-pill" %>
+              <%= f.submit " 新 規 登 録 ", class:"btn font-bold rounded-pill", style: "background-color: #ffaa00; color: #ffffff;" %>
             </div>
           </div>
         </div>
       <% end %>
-    <div class="form-row">
-      <div class="col-6 form-group mt-5">
-        <h4>既に会員済みの方</h4>
-      </div>
-    </div>
-      <div>
-        <%= link_to " ここをクリック ", new_user_session_path, class: "btn btn-primary rounded-pill" %>
+      <div class="form-row">
+        <div class="col-6 form-group mt-5 text-center">
+          <h4>既に会員済みの方</h4>
+          <div>
+            <%= link_to " ここをクリック ", new_user_session_path, class:"btn font-bold rounded-pill", style: "background-color: #ffaa00; color: #ffffff;" %>
+          </div>
+        </div>
       </div>
     </div>
   </div>

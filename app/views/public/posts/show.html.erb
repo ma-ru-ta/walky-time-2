@@ -124,48 +124,56 @@
           <h5><%= simple_format(@post.post_body, class: "m-0") %></h5>
         </div>
       </div>
-
     </div>
   </div>
-  <div>
 
+  <div>
     <h3>コメント</h3>
-      コメント件数：<%= @post.comments.count %>
-      <div>
+    <i class="fa-regular fa-comment" style="color: #8d6e62;"></i><%= @post.comments.count %>
+    <div>
       <% if user_signed_in? %>
         <%= form_with model: [@post, @post_comment] do |f| %>
-        <div class="form-group">
-          <%= f.text_area :body, placeholder: "コメントをここに★" ,  rows: 5, class: "form-control"%>
-          <%= f.submit "送信する" %>
+          <div class="form-group pt-2">
+            <%= f.text_area :body, placeholder: "コメントをここに★" ,  rows: 5, class: "form-control"%>
+            <div class="pt-2">
+              <%= f.submit "送信する" %>
+            </div>
+          </div>
         <% end %>
-        </div>
-      </div>
       <% else %>
-        <p class="alert-message">
-          <%= link_to "コメントするにはサインインが必要です。", new_user_session_path %>
-        </p>
+        <div class="form-group pt-2">
+          <div class="alert-message">
+            <%= link_to "コメントするにはログインが必要です！", new_user_session_path, class:"btn btn-light rounded-pill", style: "background-color: #f5b1aa; color: #ffffff;" %>
+          </div>
+        </div>
       <% end %>
+    </div>
 
-
-    <div>
+    <div class="p-2">
       <% @post.comments.each do |comment| %>
-        <div>
-          ユーザー名：
-          <%= link_to user_path(id: @post.user_id) do %>
-            <%= comment.user.user_name %>
-          <% end %>
+        <div class="shadow mb-3 p-4 bg-body-tertiary rounded">
+          <div>
+            ユーザー名：
+            <%= link_to user_path(id: @post.user_id) do %>
+              <%= comment.user.user_name %>
+            <% end %>
+            さん
+          </div>
+          <div>
+            <%= comment.created_at.strftime('%Y/%m/%d') %>
+          </div>
+          <div>
+            <%= comment.body %> <!--commentテーブルにあるカラム-->
+          </div>
+          <div>
+            <% if comment.user == current_user %>
+              <%= link_to "削除", post_comment_path(@post, comment), method: :delete, class:"btn btn-light rounded-pill", style: "background-color: #f5b1aa; color: #664e3d;" %>
+            <% end %>
+          </div>
         </div>
-
-          <%= comment.created_at.strftime('%Y/%m/%d') %>
-        <div>
-          <%= comment.body %>
-                                                     <!--commentテーブルにあるカラム-->
-        </div>
-          <% if comment.user == current_user %>
-            <%= link_to "削除", post_comment_path(@post, comment), method: :delete, class:"btn btn-light rounded-pill", style: "background-color: #f5b1aa; color: #664e3d;" %>
-          <% end %>
-
       <% end %>
     </div>
   </div>
 </div>
+
+

@@ -10,10 +10,13 @@ class Public::PostsController < ApplicationController
     @post.user_id = current_user.id
     if @post.save
       redirect_to posts_path
+      flash[:notice] = '新規投稿されました！'
     else
       @posts = Post.page(params[:page]).per(12)  # ページネーション用に @posts を設定
-      render :index
+      flash[:notice] = '入力されていない箇所があったため投稿できません。'
+      redirect_to request.referer
     end
+      
   end
 
   def index

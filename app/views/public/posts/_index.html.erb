@@ -1,6 +1,6 @@
 <div class="row">
   <% posts.each do |post| %>
-    <div class="col-md-4 mb-4">
+    <div class="col-md-4 mb-4 mt-5">
       <div class="card">
         <div class="card-body">
 
@@ -55,9 +55,9 @@
             <% if post.user == current_user %>
             <!--true/依頼済み   false/募集中-->
               <% if post.active_status == true %>
-                <%= link_to " 依頼済にする", switch_on_path(post.id), method: :post, class:"btn btn-sm btn-danger" %>
+                <%= link_to " 依頼済にする", switch_on_path(post.id), method: :post, class:"btn btn-sm btn-danger rounded-pill" %>
               <% else%>
-                <%= link_to " 募集中に戻す", switch_off_path(post.id),method: :post, class:"btn btn-sm btn-success" %>
+                <%= link_to " 募集中に戻す", switch_off_path(post.id),method: :post, class:"btn btn-sm btn-success rounded-pill" %>
               <% end %>
             <% end %>
             </div>

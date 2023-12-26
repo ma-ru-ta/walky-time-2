@@ -1,11 +1,10 @@
 <div class="container">
-  <h3>
-    <i class="fa-solid fa-pen" style="color: #494a50;"></i>
-      New Post
-    <i class="fa-solid fa-pen" style="color: #494a50;"></i></h3>
+  <div class= "row text-center">
+    <h3><i class="fa-solid fa-pen"></i> New Post <i class="fa-solid fa-pen"></i></h3>
+  </div>
       <%= form_with model: @post, url: posts_path, method: :post do |f| %>
     <div class="row">
-      <div class="col-md-4">
+      <div class="col-md-4 mt-2">
         <div class="form-group">
           <%= f.label :dog_name, "犬の名前" %>
           <%= f.text_field :dog_name, autofocus: true, autocomplete: "dog_name", class: "form-control" %>
@@ -22,14 +21,24 @@
       </div>
     </div>
 
+    <div class="row">
       <div class="col-md-4">
         <div class="form-group">
           <%= f.label :dog_type, "犬種" %>
           <%= f.text_field :dog_type, autocomplete: "dog_sex", class: "form-control" %>
         </div>
       </div>
+    </div>
 
     <div class="row">
+      <div class="col-md-4">
+        <%= f.label :day, "お散歩希望日" %>
+        <%= f.date_field :day, class: "form-control" %>
+      </div>
+    </div>
+
+
+    <div class="row mt-3">
       <div class="col-md-4">
         <%= f.label :prefecture_id, "都道府県" %>
         <%= f.collection_select :prefecture_id, Prefecture.all, :id, :name, {}, include_blank: "選択して下さい", class: "form-control" %>
@@ -40,10 +49,6 @@
           <%= f.text_field :city, autocomplete: "city", class: "form-control" %>
         </div>
       </div>
-      <div class="col-md-4">
-          <%= f.label :day, "日付" %>
-          <%= f.date_field :day, class: "form-control" %>
-      </div>
     </div>
 
     <div class="form-group">
@@ -53,15 +58,15 @@
       </div>
     </div>
 
-    <div class="form-group">
+    <div class="form-group mt-1">
       <%= f.label :post_body, "条件・紹介文" %>
       <%= f.text_area :post_body, class:"form-control post_body" %>
     </div>
 
     <div class="form-group">
       <div class="row">
-        <div class="col-md-6 mx-auto">
-          <%= f.submit "投　稿", class: "btn btn-primary rounded-pill" %>
+        <div class="col-md-6">
+          <%= f.submit "　投　稿　す　る　", class:"btn font-bold rounded-pill", style: "background-color: #ffaa00; color: #ffffff;" %>
         </div>
       </div>
     </div>

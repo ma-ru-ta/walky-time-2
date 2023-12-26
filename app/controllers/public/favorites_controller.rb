@@ -2,10 +2,21 @@ class Public::FavoritesController < ApplicationController
 
   def create
     post = Post.find(params[:post_id])
-    favorite = current_user.favorites.new(post_id: post.id)
-    favorite.save
-    redirect_to request.referer
+
+    # favorite = current_user.favorites.new(post_id: post.id)
+    # favorite.save
     # redirect_to request.referer
+
+    # redirect_to request.referer
+
+    if current_user
+      favorite = current_user.favorites.new(post_id: post.id)
+      favorite.save
+    else
+      redirect_to user_session_path
+      return
+    end
+      redirect_to request.referer
   end
 
   def destroy

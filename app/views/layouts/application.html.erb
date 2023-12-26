@@ -14,15 +14,20 @@
   </head>
 
   <body>
-
-      <header class="header">
-        <%= render 'layouts/header' %>
-      </header>
-      <main class="mt-5">
-        <div>
-          <%= flash[:notice] %>
-        </div>
+    <header class="header">
+      <%= render 'layouts/header' %>
+    </header>
+    <main class="mt-5">
+      <div>
+        <%= flash[:notice] %>
+      </div>
       <%= yield %>
     </main>
+    <footer class="footer">
+      <div id="footer" class="fixed-bottom d-flex align-items-center justify-content-center", style ="background-color: #ffffff;">
+        <i class="fa-solid fa-paw" style="color: #8d6e62;"></i><%= image_tag 'footer.jpg', size: '350x40' %><i class="fa-solid fa-paw" style="color: #8d6e62;"></i>
+      </div> 
+    </footer>
   </body>
 </html>
+
