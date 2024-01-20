@@ -26,6 +26,7 @@
 
 ## 設計書
   ![image](https://github.com/ma-ru-ta/walky-time/assets/143798116/b2af2a88-25e4-42d0-826b-fa64f368d9de)
+　![image](https://github.com/ma-ru-ta/walky-time/assets/143798116/57679cea-5aff-49cb-b1b5-902487b15a54)
 
 
 ## 開発環境
