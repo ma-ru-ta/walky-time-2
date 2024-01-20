@@ -25,7 +25,8 @@
 ​
 
 ## 設計書
-  
+  ![image](https://github.com/ma-ru-ta/walky-time/assets/143798116/b2af2a88-25e4-42d0-826b-fa64f368d9de)
+
 
 ## 開発環境
 - OS：Linux(CentOS)
