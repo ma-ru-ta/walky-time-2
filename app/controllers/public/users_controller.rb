@@ -7,10 +7,12 @@ class Public::UsersController < ApplicationController
 
   def edit
     @user = current_user
+    redirect_to root_path, notice: "不正な操作です。" and return unless User.find(params[:id]) == current_user
   end
 
   def update
     @user = current_user
+    redirect_to root_path, notice: "不正な操作です。" and return unless User.find(params[:id]) == current_user
     if @user.update(user_params)
        redirect_to user_path
     else

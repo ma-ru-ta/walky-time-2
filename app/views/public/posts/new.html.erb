@@ -14,8 +14,10 @@
         <div class="form-group">
           <%= f.label :dog_sex, "犬の性別" %>
             <div>
-              <%= f.radio_button :dog_sex, true %> ♂
-              <%= f.radio_button :dog_sex, false %> ♀
+              <%= f.radio_button :dog_sex, true %>
+              <%= f.label :dog_sex, '♂', value: true %>
+              <%= f.radio_button :dog_sex, false %>
+              <%= f.label :dog_sex, '♀', value: false %>
             </div>
         </div>
       </div>
@@ -33,7 +35,7 @@
     <div class="row">
       <div class="col-md-4">
         <%= f.label :day, "お散歩希望日" %>
-        <%= f.date_field :day, class: "form-control" %>
+        <%= f.date_field :day, class: "form-control", min: Date.current %>
       </div>
     </div>
 

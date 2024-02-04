@@ -165,11 +165,17 @@
           <div>
             <%= comment.body %> <!--commentテーブルにあるカラム-->
           </div>
+          <!--<div>-->
+          <!--  <% if comment.user == current_user %>-->
+          <!--    <%= link_to "削除", post_comment_path(@post, comment), method: :delete, class:"btn btn-light rounded-pill", style: "background-color: #f5b1aa; color: #664e3d;" %>-->
+          <!--  <% end %>-->
+          <!--</div>-->
           <div>
             <% if comment.user == current_user %>
-              <%= link_to "削除", post_comment_path(@post, comment), method: :delete, class:"btn btn-light rounded-pill", style: "background-color: #f5b1aa; color: #664e3d;" %>
+              <%= link_to "削除", post_comment_path(@post, comment), method: :delete, class: "btn btn-light rounded-pill", style: "background-color: #f5b1aa; color: #664e3d;", data: { confirm: '本当に削除しますか？', turbolinks: false, remote: true } %>
             <% end %>
           </div>
+
         </div>
       <% end %>
     </div>
